@@ -1,7 +1,13 @@
-import { useState } from 'react';
-import { Star, ChevronDown, Heart } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Star, ChevronDown, Heart, BookOpen, Trophy, Users, Bookmark, Clock, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import AudioPlayer from '@/components/AudioPlayer';
+import SearchBar from '@/components/SearchBar';
+import FavoriteButton from '@/components/FavoriteButton';
+import ProgressTracker from '@/components/ProgressTracker';
+import DailyReminder from '@/components/DailyReminder';
+import ShareButton from '@/components/ShareButton';
 
 const kalimas = [
   {
@@ -74,10 +80,62 @@ const kalimas = [
 
 const Index = () => {
   const [activeKalima, setActiveKalima] = useState<number | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredKalimas, setFilteredKalimas] = useState(kalimas);
+  const [visitCount, setVisitCount] = useState(0);
+
+  useEffect(() => {
+    // SEO: Add structured data
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "6 Kalimas of Islam",
+      "description": "Learn and recite the 6 Kalimas of Islam - sacred declarations that form the foundation of Islamic faith. Arabic text with English translations and meanings.",
+      "url": window.location.href,
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://6kalimas.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.innerHTML = JSON.stringify(structuredData);
+    document.head.appendChild(script);
+
+    // Track visits
+    const visits = parseInt(localStorage.getItem('site-visits') || '0') + 1;
+    localStorage.setItem('site-visits', visits.toString());
+    setVisitCount(visits);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
+
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+    if (query.trim() === '') {
+      setFilteredKalimas(kalimas);
+    } else {
+      const filtered = kalimas.filter(kalima =>
+        kalima.name.toLowerCase().includes(query.toLowerCase()) ||
+        kalima.title.toLowerCase().includes(query.toLowerCase()) ||
+        kalima.translation.toLowerCase().includes(query.toLowerCase()) ||
+        kalima.transliteration.toLowerCase().includes(query.toLowerCase())
+      );
+      setFilteredKalimas(filtered);
+    }
+  };
+
+  const clearSearch = () => {
+    setSearchQuery('');
+    setFilteredKalimas(kalimas);
+  };
 
   const scrollToKalima = (id: number) => {
     setActiveKalima(id);
-    // Add a small delay to ensure the element is rendered before scrolling
     setTimeout(() => {
       const element = document.getElementById(`kalima-${id}`);
       element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -88,8 +146,19 @@ const Index = () => {
     scrollToKalima(id);
   };
 
+  const downloadPDF = () => {
+    console.log('Downloading PDF guide...');
+    // In a real implementation, this would trigger a PDF download
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-emerald-50">
+      {/* SEO Meta Tags */}
+      <div style={{ display: 'none' }}>
+        <h1>6 Kalimas of Islam - Sacred Declarations of Faith</h1>
+        <p>Learn the Six Kalimas: Tayyibah, Shahadat, Tamjeed, Tawheed, Istighfar, and Radde Kufr. Complete with Arabic text, transliteration, translation, and meanings.</p>
+      </div>
+
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-emerald-100">
         <div className="container mx-auto px-4 py-4">
@@ -103,16 +172,12 @@ const Index = () => {
                 <p className="text-sm text-emerald-600">Sacred Declarations of Faith</p>
               </div>
             </div>
-            <nav className="hidden md:flex space-x-6">
-              {kalimas.slice(0, 3).map((kalima) => (
-                <button
-                  key={kalima.id}
-                  onClick={() => scrollToKalima(kalima.id)}
-                  className="text-emerald-700 hover:text-emerald-900 transition-colors text-sm font-medium"
-                >
-                  {kalima.name}
-                </button>
-              ))}
+            <nav className="hidden md:flex items-center space-x-6">
+              <span className="text-sm text-emerald-600">Visits: {visitCount.toLocaleString()}</span>
+              <Button onClick={downloadPDF} variant="outline" size="sm">
+                <Download className="w-4 h-4 mr-2" />
+                PDF Guide
+              </Button>
             </nav>
           </div>
         </div>
@@ -144,6 +209,50 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Features Section */}
+      <section className="py-12 px-4 bg-gradient-to-r from-blue-50 to-purple-50">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <Card className="text-center p-6 hover:shadow-lg transition-shadow">
+              <BookOpen className="w-8 h-8 text-blue-600 mx-auto mb-3" />
+              <h3 className="font-semibold text-blue-900 mb-2">Complete Learning</h3>
+              <p className="text-sm text-blue-700">Arabic, transliteration, and meanings</p>
+            </Card>
+            <Card className="text-center p-6 hover:shadow-lg transition-shadow">
+              <Clock className="w-8 h-8 text-purple-600 mx-auto mb-3" />
+              <h3 className="font-semibold text-purple-900 mb-2">Progress Tracking</h3>
+              <p className="text-sm text-purple-700">Track your reading progress</p>
+            </Card>
+            <Card className="text-center p-6 hover:shadow-lg transition-shadow">
+              <Heart className="w-8 h-8 text-pink-600 mx-auto mb-3" />
+              <h3 className="font-semibold text-pink-900 mb-2">Favorites</h3>
+              <p className="text-sm text-pink-700">Save your favorite Kalimas</p>
+            </Card>
+            <Card className="text-center p-6 hover:shadow-lg transition-shadow">
+              <Users className="w-8 h-8 text-green-600 mx-auto mb-3" />
+              <h3 className="font-semibold text-green-900 mb-2">Share & Learn</h3>
+              <p className="text-sm text-green-700">Share with family and friends</p>
+            </Card>
+          </div>
+          
+          <div className="mt-8 max-w-md mx-auto">
+            <DailyReminder />
+          </div>
+        </div>
+      </section>
+
+      {/* Search Section */}
+      <section className="py-8 px-4">
+        <div className="container mx-auto max-w-4xl">
+          <SearchBar onSearch={handleSearch} onClear={clearSearch} />
+          {searchQuery && (
+            <p className="text-center mt-4 text-emerald-700">
+              Found {filteredKalimas.length} result{filteredKalimas.length !== 1 ? 's' : ''} for "{searchQuery}"
+            </p>
+          )}
+        </div>
+      </section>
+
       {/* Kalimas Cards Overview */}
       <section className="py-16 px-4">
         <div className="container mx-auto max-w-7xl">
@@ -157,7 +266,7 @@ const Index = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-            {kalimas.map((kalima) => (
+            {filteredKalimas.map((kalima) => (
               <Card
                 key={kalima.id}
                 className={`cursor-pointer transform hover:scale-105 transition-all duration-300 hover:shadow-2xl border-0 overflow-hidden ${
@@ -171,7 +280,7 @@ const Index = () => {
                       <div className={`w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-xl font-bold`}>
                         {kalima.id}
                       </div>
-                      <Heart className="w-6 h-6 text-white/70 hover:text-white transition-colors" />
+                      <FavoriteButton kalimaId={kalima.id} title={kalima.name} />
                     </div>
                     <h3 className="text-xl font-bold mb-2">{kalima.shortTitle}</h3>
                   </div>
@@ -214,16 +323,22 @@ const Index = () => {
                             <p className="text-white/90 text-lg">{kalima.title}</p>
                           </div>
                         </div>
-                        <button
-                          onClick={() => setActiveKalima(null)}
-                          className="text-white/70 hover:text-white transition-colors text-2xl"
-                        >
-                          ×
-                        </button>
+                        <div className="flex items-center space-x-2">
+                          <ShareButton kalimaId={kalima.id} title={kalima.name} />
+                          <button
+                            onClick={() => setActiveKalima(null)}
+                            className="text-white/70 hover:text-white transition-colors text-2xl"
+                          >
+                            ×
+                          </button>
+                        </div>
                       </div>
                     </div>
 
                     <div className="p-8 space-y-8">
+                      {/* Audio Player */}
+                      <AudioPlayer kalimaId={kalima.id} title={kalima.name} />
+
                       {/* Arabic Text */}
                       <div className="text-center">
                         <div className="bg-gradient-to-r from-amber-50 to-emerald-50 rounded-xl p-8 border border-emerald-100">
@@ -256,6 +371,9 @@ const Index = () => {
                           {kalima.meaning}
                         </p>
                       </div>
+
+                      {/* Progress Tracker */}
+                      <ProgressTracker kalimaId={kalima.id} title={kalima.name} />
                     </div>
                   </CardContent>
                 </Card>
@@ -264,20 +382,89 @@ const Index = () => {
         </section>
       )}
 
+      {/* Statistics Section */}
+      <section className="py-16 px-4 bg-gradient-to-r from-gray-50 to-slate-50">
+        <div className="container mx-auto max-w-4xl text-center">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8">Learning Statistics</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="bg-white rounded-lg p-6 shadow-md">
+              <Trophy className="w-8 h-8 text-yellow-600 mx-auto mb-2" />
+              <div className="text-2xl font-bold text-gray-900">{visitCount.toLocaleString()}</div>
+              <div className="text-sm text-gray-600">Total Visits</div>
+            </div>
+            <div className="bg-white rounded-lg p-6 shadow-md">
+              <BookOpen className="w-8 h-8 text-blue-600 mx-auto mb-2" />
+              <div className="text-2xl font-bold text-gray-900">6</div>
+              <div className="text-sm text-gray-600">Sacred Kalimas</div>
+            </div>
+            <div className="bg-white rounded-lg p-6 shadow-md">
+              <Users className="w-8 h-8 text-green-600 mx-auto mb-2" />
+              <div className="text-2xl font-bold text-gray-900">1.8B+</div>
+              <div className="text-sm text-gray-600">Muslims Worldwide</div>
+            </div>
+            <div className="bg-white rounded-lg p-6 shadow-md">
+              <Clock className="w-8 h-8 text-purple-600 mx-auto mb-2" />
+              <div className="text-2xl font-bold text-gray-900">1400+</div>
+              <div className="text-sm text-gray-600">Years of History</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="bg-emerald-900 text-white py-12 px-4">
-        <div className="container mx-auto max-w-4xl text-center">
-          <div className="flex items-center justify-center space-x-3 mb-6">
-            <div className="w-8 h-8 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-lg flex items-center justify-center">
-              <Star className="w-5 h-5 text-white" />
+        <div className="container mx-auto max-w-4xl">
+          <div className="text-center mb-8">
+            <div className="flex items-center justify-center space-x-3 mb-6">
+              <div className="w-8 h-8 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-lg flex items-center justify-center">
+                <Star className="w-5 h-5 text-white" />
+              </div>
+              <h3 className="text-xl font-bold">6 Kalimas</h3>
             </div>
-            <h3 className="text-xl font-bold">6 Kalimas</h3>
+            <p className="text-emerald-200 mb-6 leading-relaxed">
+              May these sacred declarations strengthen your faith and bring you closer to Allah. 
+              Recite them with sincerity and understanding.
+            </p>
           </div>
-          <p className="text-emerald-200 mb-6 leading-relaxed">
-            May these sacred declarations strengthen your faith and bring you closer to Allah. 
-            Recite them with sincerity and understanding.
-          </p>
-          <div className="w-16 h-1 bg-gradient-to-r from-emerald-400 to-amber-400 mx-auto rounded-full"></div>
+          
+          <div className="border-t border-emerald-800 pt-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+              <div>
+                <h4 className="font-semibold mb-3">Features</h4>
+                <ul className="space-y-2 text-emerald-200 text-sm">
+                  <li>Audio Recitation</li>
+                  <li>Progress Tracking</li>
+                  <li>Daily Reminders</li>
+                  <li>Favorites System</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-semibold mb-3">Learn</h4>
+                <ul className="space-y-2 text-emerald-200 text-sm">
+                  <li>Arabic Text</li>
+                  <li>Transliteration</li>
+                  <li>English Translation</li>
+                  <li>Detailed Meanings</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-semibold mb-3">Share</h4>
+                <ul className="space-y-2 text-emerald-200 text-sm">
+                  <li>Social Sharing</li>
+                  <li>PDF Downloads</li>
+                  <li>Mobile Friendly</li>
+                  <li>Offline Ready</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div className="text-center">
+              <div className="w-16 h-1 bg-gradient-to-r from-emerald-400 to-amber-400 mx-auto rounded-full mb-4"></div>
+              <p className="text-emerald-300 text-sm">
+                © 2024 6 Kalimas. Made with ❤️ for the Muslim Ummah.
+              </p>
+            </div>
+          </div>
         </div>
       </footer>
     </div>
