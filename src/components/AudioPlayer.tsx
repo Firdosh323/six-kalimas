@@ -17,8 +17,21 @@ const AudioPlayer = ({ kalimaId, title }: AudioPlayerProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  // Audio file URLs from your GitHub repository
-  const audioUrl = `https://raw.githubusercontent.com/Firdosh323/6kalma/main/kalma${kalimaId}.mp3`;
+  // Map kalima IDs to file names
+  const getAudioFileName = (id: number) => {
+    const fileNames = {
+      1: 'First_Kalma.mp3',
+      2: 'Second_Kalma.mp3',
+      3: 'Third_Kalma.mp3',
+      4: 'Fourth_Kalma.mp3',
+      5: 'Fifth_Kalma.mp3',
+      6: 'Sixth_Kalma.mp3'
+    };
+    return fileNames[id as keyof typeof fileNames] || 'First_Kalma.mp3';
+  };
+
+  // Audio file URLs from public/audio folder
+  const audioUrl = `/audio/${getAudioFileName(kalimaId)}`;
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -46,11 +59,17 @@ const AudioPlayer = ({ kalimaId, title }: AudioPlayerProps) => {
       setIsLoading(false);
     };
 
+    const handleError = () => {
+      console.error('Error loading audio file:', audioUrl);
+      setIsLoading(false);
+    };
+
     audio.addEventListener('loadedmetadata', handleLoadedMetadata);
     audio.addEventListener('timeupdate', handleTimeUpdate);
     audio.addEventListener('ended', handleEnded);
     audio.addEventListener('loadstart', handleLoadStart);
     audio.addEventListener('canplay', handleCanPlay);
+    audio.addEventListener('error', handleError);
 
     return () => {
       audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
@@ -58,6 +77,7 @@ const AudioPlayer = ({ kalimaId, title }: AudioPlayerProps) => {
       audio.removeEventListener('ended', handleEnded);
       audio.removeEventListener('loadstart', handleLoadStart);
       audio.removeEventListener('canplay', handleCanPlay);
+      audio.removeEventListener('error', handleError);
     };
   }, [audioUrl]);
 
