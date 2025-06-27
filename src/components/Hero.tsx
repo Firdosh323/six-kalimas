@@ -19,7 +19,7 @@ const Hero = () => {
           </p>
         </div>
 
-        <div className="mt-6 my-[12px]">
+        <div className="mt-2 my-[2px]">
           <ChevronDown className="w-8 h-8 text-emerald-600 mx-auto animate-bounce" />
         </div>
       </div>
