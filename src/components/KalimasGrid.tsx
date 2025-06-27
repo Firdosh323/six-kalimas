@@ -1,7 +1,5 @@
-
 import { Card, CardContent } from '@/components/ui/card';
 import FavoriteButton from '@/components/FavoriteButton';
-
 interface Kalima {
   id: number;
   name: string;
@@ -9,19 +7,20 @@ interface Kalima {
   arabic: string;
   cardColor: string;
 }
-
 interface KalimasGridProps {
   kalimas: Kalima[];
   activeKalima: number | null;
   onCardClick: (id: number) => void;
 }
-
-const KalimasGrid = ({ kalimas, activeKalima, onCardClick }: KalimasGridProps) => {
-  return (
-    <section className="px-4 py-0">
+const KalimasGrid = ({
+  kalimas,
+  activeKalima,
+  onCardClick
+}: KalimasGridProps) => {
+  return <section className="px-4 py-0">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-emerald-900 mb-4">
+          <h2 className="text-3xl font-bold text-emerald-900 mb-2 md:text-2xl">
             The Six Sacred Kalimas
           </h2>
           <p className="text-lg text-emerald-700">
@@ -30,12 +29,7 @@ const KalimasGrid = ({ kalimas, activeKalima, onCardClick }: KalimasGridProps) =
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {kalimas.map(kalima => (
-            <Card 
-              key={kalima.id} 
-              className={`cursor-pointer transform hover:scale-105 transition-all duration-300 hover:shadow-2xl border-0 overflow-hidden ${activeKalima === kalima.id ? 'ring-4 ring-emerald-400 scale-105' : ''}`} 
-              onClick={() => onCardClick(kalima.id)}
-            >
+          {kalimas.map(kalima => <Card key={kalima.id} className={`cursor-pointer transform hover:scale-105 transition-all duration-300 hover:shadow-2xl border-0 overflow-hidden ${activeKalima === kalima.id ? 'ring-4 ring-emerald-400 scale-105' : ''}`} onClick={() => onCardClick(kalima.id)}>
               <CardContent className="p-0">
                 <div className={`bg-gradient-to-br ${kalima.cardColor} text-white p-6 relative`}>
                   <div className="flex items-center justify-between mb-4">
@@ -55,12 +49,9 @@ const KalimasGrid = ({ kalimas, activeKalima, onCardClick }: KalimasGridProps) =
                   </div>
                 </div>
               </CardContent>
-            </Card>
-          ))}
+            </Card>)}
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default KalimasGrid;
