@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Star, ChevronDown, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -78,16 +77,15 @@ const Index = () => {
 
   const scrollToKalima = (id: number) => {
     setActiveKalima(id);
-    const element = document.getElementById(`kalima-${id}`);
-    element?.scrollIntoView({ behavior: 'smooth' });
+    // Add a small delay to ensure the element is rendered before scrolling
+    setTimeout(() => {
+      const element = document.getElementById(`kalima-${id}`);
+      element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
   };
 
   const handleCardClick = (id: number) => {
-    if (activeKalima === id) {
-      setActiveKalima(null);
-    } else {
-      scrollToKalima(id);
-    }
+    scrollToKalima(id);
   };
 
   return (
