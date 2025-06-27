@@ -8,6 +8,7 @@ import FavoriteButton from '@/components/FavoriteButton';
 import ProgressTracker from '@/components/ProgressTracker';
 import DailyReminder from '@/components/DailyReminder';
 import ShareButton from '@/components/ShareButton';
+
 const kalimas = [{
   id: 1,
   name: "Kalima Tayyibah",
@@ -69,6 +70,7 @@ const kalimas = [{
   meaning: "This final Kalima serves as a comprehensive rejection of all forms of disbelief and sin, while reaffirming one's commitment to Islamic faith.",
   cardColor: "from-cyan-500 to-blue-600"
 }];
+
 const Index = () => {
   const [activeKalima, setActiveKalima] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
@@ -483,4 +485,5 @@ const Index = () => {
       </footer>
     </div>;
 };
+
 export default Index;
