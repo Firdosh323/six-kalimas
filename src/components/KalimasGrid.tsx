@@ -1,6 +1,6 @@
 
 import { Card, CardContent } from '@/components/ui/card';
-import { Heart } from 'lucide-react';
+import FavoriteButton from '@/components/FavoriteButton';
 
 interface Kalima {
   id: number;
@@ -23,13 +23,13 @@ const KalimasGrid = ({
 }: KalimasGridProps) => {
   const getCardBackgroundColor = (id: number) => {
     switch (id) {
-      case 1: return 'bg-emerald-100';
-      case 2: return 'bg-blue-100';
-      case 3: return 'bg-purple-100';
-      case 4: return 'bg-orange-100';
-      case 5: return 'bg-pink-100';
-      case 6: return 'bg-cyan-100';
-      default: return 'bg-gray-100';
+      case 1: return 'bg-emerald-50';
+      case 2: return 'bg-blue-50';
+      case 3: return 'bg-purple-50';
+      case 4: return 'bg-orange-50';
+      case 5: return 'bg-pink-50';
+      case 6: return 'bg-cyan-50';
+      default: return 'bg-gray-50';
     }
   };
 
@@ -61,26 +61,29 @@ const KalimasGrid = ({
           {kalimas.map(kalima => (
             <Card 
               key={kalima.id} 
-              className={`cursor-pointer transform hover:scale-105 transition-all duration-300 hover:shadow-lg border-0 overflow-hidden ${
+              className={`cursor-pointer transform hover:scale-105 transition-all duration-300 hover:shadow-lg border border-gray-200 overflow-hidden ${
                 activeKalima === kalima.id ? 'ring-4 ring-emerald-400 scale-105' : ''
               } ${getCardBackgroundColor(kalima.id)}`} 
               onClick={() => onCardClick(kalima.id)}
             >
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <div className={`w-12 h-12 ${getCircleColor(kalima.id)} rounded-full flex items-center justify-center text-white text-xl font-bold`}>
+                  <div className={`w-12 h-12 ${getCircleColor(kalima.id)} rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg`}>
                     {kalima.id}
                   </div>
-                  <Heart className="w-6 h-6 text-gray-400 hover:text-red-500 transition-colors" />
+                  <div onClick={(e) => e.stopPropagation()}>
+                    <FavoriteButton kalimaId={kalima.id} title={kalima.shortTitle} />
+                  </div>
                 </div>
                 
-                <h3 className="text-lg font-bold mb-4 text-gray-800">
+                <h3 className="text-lg font-bold mb-6 text-gray-800">
                   {kalima.shortTitle}
                 </h3>
                 
-                <div className="text-right">
-                  <p className="text-lg font-arabic leading-relaxed text-gray-700" dir="rtl">
-                    {kalima.arabic.length > 60 ? `${kalima.arabic.substring(0, 60)}...` : kalima.arabic}
+                {/* Arabic Text - More prominent and visual */}
+                <div className="bg-white rounded-lg p-4 border border-gray-100 shadow-sm mb-2">
+                  <p className="text-2xl font-arabic leading-loose text-center text-emerald-800 font-semibold" dir="rtl">
+                    {kalima.arabic.length > 50 ? `${kalima.arabic.substring(0, 50)}...` : kalima.arabic}
                   </p>
                 </div>
               </CardContent>
