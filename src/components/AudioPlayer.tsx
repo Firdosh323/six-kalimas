@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Play, Pause, Volume2, RotateCcw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/slider';
@@ -12,52 +12,105 @@ interface AudioPlayerProps {
 const AudioPlayer = ({ kalimaId, title }: AudioPlayerProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(45); // Placeholder duration in seconds
+  const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState([80]);
+  const [isLoading, setIsLoading] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
-  // Simulate audio playback
+  // Audio file URLs from your GitHub repository
+  const audioUrl = `https://raw.githubusercontent.com/Firdosh323/6kalma/main/kalma${kalimaId}.mp3`;
+
   useEffect(() => {
-    let interval: NodeJS.Timeout;
-    
-    if (isPlaying && currentTime < duration) {
-      interval = setInterval(() => {
-        setCurrentTime(prev => {
-          if (prev >= duration) {
-            setIsPlaying(false);
-            return duration;
-          }
-          return prev + 1;
-        });
-      }, 1000);
-    }
+    const audio = audioRef.current;
+    if (!audio) return;
 
-    return () => clearInterval(interval);
-  }, [isPlaying, currentTime, duration]);
+    const handleLoadedMetadata = () => {
+      setDuration(audio.duration);
+      setIsLoading(false);
+    };
 
-  const handlePlay = () => {
-    if (currentTime >= duration) {
+    const handleTimeUpdate = () => {
+      setCurrentTime(audio.currentTime);
+    };
+
+    const handleEnded = () => {
+      setIsPlaying(false);
       setCurrentTime(0);
+    };
+
+    const handleLoadStart = () => {
+      setIsLoading(true);
+    };
+
+    const handleCanPlay = () => {
+      setIsLoading(false);
+    };
+
+    audio.addEventListener('loadedmetadata', handleLoadedMetadata);
+    audio.addEventListener('timeupdate', handleTimeUpdate);
+    audio.addEventListener('ended', handleEnded);
+    audio.addEventListener('loadstart', handleLoadStart);
+    audio.addEventListener('canplay', handleCanPlay);
+
+    return () => {
+      audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
+      audio.removeEventListener('timeupdate', handleTimeUpdate);
+      audio.removeEventListener('ended', handleEnded);
+      audio.removeEventListener('loadstart', handleLoadStart);
+      audio.removeEventListener('canplay', handleCanPlay);
+    };
+  }, [audioUrl]);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (audio) {
+      audio.volume = volume[0] / 100;
     }
-    setIsPlaying(!isPlaying);
-    console.log(`${isPlaying ? 'Pausing' : 'Playing'} audio for ${title}`);
+  }, [volume]);
+
+  const handlePlay = async () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    try {
+      if (isPlaying) {
+        audio.pause();
+        setIsPlaying(false);
+      } else {
+        await audio.play();
+        setIsPlaying(true);
+      }
+    } catch (error) {
+      console.error('Error playing audio:', error);
+      setIsLoading(false);
+    }
   };
 
   const handleRestart = () => {
-    setCurrentTime(0);
-    setIsPlaying(false);
+    const audio = audioRef.current;
+    if (audio) {
+      audio.currentTime = 0;
+      setCurrentTime(0);
+      if (isPlaying) {
+        audio.pause();
+        setIsPlaying(false);
+      }
+    }
   };
 
   const handleProgressChange = (value: number[]) => {
-    setCurrentTime(value[0]);
-    if (isPlaying) {
-      // In real implementation, seek to this position
-      console.log(`Seeking to ${value[0]} seconds`);
+    const audio = audioRef.current;
+    if (audio && duration > 0) {
+      const newTime = value[0];
+      audio.currentTime = newTime;
+      setCurrentTime(newTime);
     }
   };
 
   const formatTime = (seconds: number) => {
+    if (isNaN(seconds)) return '0:00';
     const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = seconds % 60;
+    const remainingSeconds = Math.floor(seconds % 60);
     return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
   };
 
@@ -65,14 +118,27 @@ const AudioPlayer = ({ kalimaId, title }: AudioPlayerProps) => {
 
   return (
     <div className="bg-gradient-to-r from-emerald-50 to-emerald-100 rounded-xl p-6 border-2 border-emerald-200">
+      <audio
+        ref={audioRef}
+        src={audioUrl}
+        preload="metadata"
+      />
+      
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center space-x-3">
           <Button
             onClick={handlePlay}
             size="lg"
+            disabled={isLoading}
             className="bg-emerald-600 hover:bg-emerald-700 w-12 h-12 rounded-full"
           >
-            {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5 ml-0.5" />}
+            {isLoading ? (
+              <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+            ) : isPlaying ? (
+              <Pause className="w-5 h-5" />
+            ) : (
+              <Play className="w-5 h-5 ml-0.5" />
+            )}
           </Button>
           
           <Button
@@ -108,7 +174,7 @@ const AudioPlayer = ({ kalimaId, title }: AudioPlayerProps) => {
         <Slider
           value={[currentTime]}
           onValueChange={handleProgressChange}
-          max={duration}
+          max={duration || 100}
           step={1}
           className="w-full"
         />
@@ -120,9 +186,16 @@ const AudioPlayer = ({ kalimaId, title }: AudioPlayerProps) => {
 
       {/* Status indicator */}
       <div className="mt-3 flex items-center space-x-2">
-        <div className={`w-2 h-2 rounded-full ${isPlaying ? 'bg-green-500 animate-pulse' : 'bg-gray-400'}`}></div>
+        <div className={`w-2 h-2 rounded-full ${
+          isLoading ? 'bg-yellow-500 animate-pulse' :
+          isPlaying ? 'bg-green-500 animate-pulse' : 
+          'bg-gray-400'
+        }`}></div>
         <span className="text-sm text-emerald-800">
-          {isPlaying ? 'Playing recitation...' : currentTime >= duration ? 'Recitation complete' : 'Ready to play'}
+          {isLoading ? 'Loading audio...' :
+           isPlaying ? 'Playing recitation...' : 
+           currentTime >= duration && duration > 0 ? 'Recitation complete' : 
+           'Ready to play'}
         </span>
       </div>
     </div>
