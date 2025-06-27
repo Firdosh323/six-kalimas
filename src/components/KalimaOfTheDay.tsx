@@ -22,7 +22,7 @@ const KalimaOfTheDay = ({
             <div>
               <h2 className="mb-2 font-semibold text-lg">Kalima of the Day</h2>
               <h3 className="text-xl mb-2 font-bold">{kalima.shortTitle}</h3>
-              <p className="text-white/90 mb-6 leading-relaxed">
+              <p className="text-white/80 mb-4 leading-relaxed">
                 {kalima.meaning}
               </p>
               <Button onClick={() => onReadMore(kalima.id)} className="bg-white text-gray-900 hover:bg-white/90">
