@@ -165,7 +165,7 @@ const Index = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="relative py-20 px-4 text-center">
+      <section className="relative py-8 px-4 text-center">
         <div className="absolute inset-0 bg-gradient-to-r from-emerald-600/10 to-amber-600/10 px-0"></div>
         <div className="relative container mx-auto max-w-4xl">
           <div className="mb-4">
@@ -184,7 +184,7 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="mt-12 my-[12px]">
+          <div className="mt-6 my-[12px]">
             <ChevronDown className="w-8 h-8 text-emerald-600 mx-auto animate-bounce" />
           </div>
         </div>
