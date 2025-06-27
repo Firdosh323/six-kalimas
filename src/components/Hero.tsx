@@ -1,11 +1,8 @@
-
 import { ChevronDown } from 'lucide-react';
-
 const Hero = () => {
-  return (
-    <section className="relative py-8 px-4 text-center">
+  return <section className="relative py-8 px-4 text-center">
       <div className="absolute inset-0 bg-gradient-to-r from-emerald-600/10 to-amber-600/10 px-0"></div>
-      <div className="relative container mx-auto max-w-4xl">
+      <div className="relative container mx-auto max-w-4xl px-[5px]">
         <div className="text-center mb-12">
           <h1 className="text-5xl font-bold text-emerald-900 mb-6 leading-tight md:text-5xl">
             The Six Kalimas
@@ -26,8 +23,6 @@ const Hero = () => {
           <ChevronDown className="w-8 h-8 text-emerald-600 mx-auto animate-bounce" />
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
