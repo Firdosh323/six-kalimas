@@ -3,7 +3,7 @@ const Hero = () => {
   return <section className="relative py-8 px-4 text-center">
       <div className="absolute inset-0 bg-gradient-to-r from-emerald-600/10 to-amber-600/10 px-0"></div>
       <div className="relative container mx-auto max-w-4xl px-[5px]">
-        <div className="text-center mb-12">
+        <div className="text-center mb-2">
           <h1 className="text-3xl font-bold text-emerald-900 mb-2 leading-tight md:text-4xl">
             The Six Kalimas
           </h1>
