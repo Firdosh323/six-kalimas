@@ -101,9 +101,8 @@
 
   .font-arabic {
     font-family: 'Amiri', 'Arabic Typesetting', 'Traditional Arabic', serif;
-    font-weight: 700;
-    line-height: 2;
-    letter-spacing: 0.05em;
+    font-weight: 400;
+    line-height: 1.8;
   }
 }
 

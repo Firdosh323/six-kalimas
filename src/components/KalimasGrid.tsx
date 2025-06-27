@@ -1,7 +1,5 @@
-
 import { Card, CardContent } from '@/components/ui/card';
 import FavoriteButton from '@/components/FavoriteButton';
-
 interface Kalima {
   id: number;
   name: string;
@@ -9,44 +7,17 @@ interface Kalima {
   arabic: string;
   cardColor: string;
 }
-
 interface KalimasGridProps {
   kalimas: Kalima[];
   activeKalima: number | null;
   onCardClick: (id: number) => void;
 }
-
 const KalimasGrid = ({
   kalimas,
   activeKalima,
   onCardClick
 }: KalimasGridProps) => {
-  const getCardBackgroundColor = (id: number) => {
-    switch (id) {
-      case 1: return 'bg-emerald-50';
-      case 2: return 'bg-blue-50';
-      case 3: return 'bg-purple-50';
-      case 4: return 'bg-orange-50';
-      case 5: return 'bg-pink-50';
-      case 6: return 'bg-cyan-50';
-      default: return 'bg-gray-50';
-    }
-  };
-
-  const getCircleColor = (id: number) => {
-    switch (id) {
-      case 1: return 'bg-emerald-500';
-      case 2: return 'bg-blue-500';
-      case 3: return 'bg-purple-500';
-      case 4: return 'bg-orange-500';
-      case 5: return 'bg-pink-500';
-      case 6: return 'bg-cyan-500';
-      default: return 'bg-gray-500';
-    }
-  };
-
-  return (
-    <section className="px-4 py-0">
+  return <section className="px-4 py-0">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-emerald-900 mb-2 md:text-2xl">
@@ -58,41 +29,29 @@ const KalimasGrid = ({
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {kalimas.map(kalima => (
-            <Card 
-              key={kalima.id} 
-              className={`cursor-pointer transform hover:scale-105 transition-all duration-300 hover:shadow-lg border border-gray-200 overflow-hidden ${
-                activeKalima === kalima.id ? 'ring-4 ring-emerald-400 scale-105' : ''
-              } ${getCardBackgroundColor(kalima.id)}`} 
-              onClick={() => onCardClick(kalima.id)}
-            >
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <div className={`w-12 h-12 ${getCircleColor(kalima.id)} rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg`}>
-                    {kalima.id}
+          {kalimas.map(kalima => <Card key={kalima.id} className={`cursor-pointer transform hover:scale-105 transition-all duration-300 hover:shadow-2xl border-0 overflow-hidden ${activeKalima === kalima.id ? 'ring-4 ring-emerald-400 scale-105' : ''}`} onClick={() => onCardClick(kalima.id)}>
+              <CardContent className="p-0">
+                <div className={`bg-gradient-to-br ${kalima.cardColor} text-white p-6 relative`}>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className={`w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-xl font-bold`}>
+                      {kalima.id}
+                    </div>
+                    <FavoriteButton kalimaId={kalima.id} title={kalima.name} />
                   </div>
-                  <div onClick={(e) => e.stopPropagation()}>
-                    <FavoriteButton kalimaId={kalima.id} title={kalima.shortTitle} />
-                  </div>
+                  <h3 className="text-xl font-bold mb-2">{kalima.shortTitle}</h3>
                 </div>
                 
-                <h3 className="text-lg font-bold mb-6 text-gray-800">
-                  {kalima.shortTitle}
-                </h3>
-                
-                {/* Arabic Text - More prominent and visual */}
-                <div className="bg-white rounded-lg p-4 border border-gray-100 shadow-sm mb-2">
-                  <p className="text-2xl font-arabic leading-loose text-center text-emerald-800 font-semibold" dir="rtl">
-                    {kalima.arabic.length > 50 ? `${kalima.arabic.substring(0, 50)}...` : kalima.arabic}
-                  </p>
+                <div className="p-6 bg-slate-800/90 text-white">
+                  <div className="text-right mb-4">
+                    <p className="text-lg font-arabic leading-relaxed" dir="rtl">
+                      {kalima.arabic.length > 80 ? `${kalima.arabic.substring(0, 80)}...` : kalima.arabic}
+                    </p>
+                  </div>
                 </div>
               </CardContent>
-            </Card>
-          ))}
+            </Card>)}
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default KalimasGrid;
