@@ -74,7 +74,15 @@ const Index = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredKalimas, setFilteredKalimas] = useState(kalimas);
   const [visitCount, setVisitCount] = useState(0);
+  const [kalimaOfTheDay, setKalimaOfTheDay] = useState(kalimas[0]);
+
   useEffect(() => {
+    // Set Kalima of the Day based on current date
+    const today = new Date();
+    const dayOfYear = Math.floor((today.getTime() - new Date(today.getFullYear(), 0, 0).getTime()) / (1000 * 60 * 60 * 24));
+    const kalimaIndex = dayOfYear % kalimas.length;
+    setKalimaOfTheDay(kalimas[kalimaIndex]);
+
     // SEO: Add structured data
     const structuredData = {
       "@context": "https://schema.org",
@@ -101,6 +109,7 @@ const Index = () => {
       document.head.removeChild(script);
     };
   }, []);
+
   const handleSearch = (query: string) => {
     setSearchQuery(query);
     if (query.trim() === '') {
@@ -186,6 +195,58 @@ const Index = () => {
 
           <div className="mt-6 my-[12px]">
             <ChevronDown className="w-8 h-8 text-emerald-600 mx-auto animate-bounce" />
+          </div>
+        </div>
+      </section>
+
+      {/* Ad Placeholder */}
+      <section className="py-4 px-4">
+        <div className="container mx-auto max-w-4xl">
+          <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
+            <h3 className="text-lg font-semibold text-gray-600 mb-2">Ad Placeholder</h3>
+            <p className="text-gray-500">Your AdSense ad could be displayed here.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Kalima of the Day */}
+      <section className="py-6 px-4">
+        <div className="container mx-auto max-w-4xl">
+          <div className={`bg-gradient-to-r ${kalimaOfTheDay.cardColor} rounded-2xl p-8 text-white relative overflow-hidden`}>
+            <div className="flex items-start space-x-3 mb-4">
+              <div className="bg-white/20 rounded-full p-2">
+                <Star className="w-6 h-6" />
+              </div>
+              <div>
+                <h2 className="text-2xl font-bold mb-2">Kalima of the Day</h2>
+                <h3 className="text-xl font-semibold mb-3">{kalimaOfTheDay.shortTitle}</h3>
+                <p className="text-white/90 mb-6 leading-relaxed">
+                  {kalimaOfTheDay.meaning}
+                </p>
+                <Button 
+                  onClick={() => scrollToKalima(kalimaOfTheDay.id)}
+                  className="bg-white text-gray-900 hover:bg-white/90"
+                >
+                  Read More
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Action Buttons */}
+      <section className="py-6 px-4">
+        <div className="container mx-auto max-w-4xl">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 text-lg">
+              <Trophy className="w-5 h-5 mr-2" />
+              Test Your Knowledge
+            </Button>
+            <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg">
+              <Bell className="w-5 h-5 mr-2" />
+              Set Daily Reminder
+            </Button>
           </div>
         </div>
       </section>
