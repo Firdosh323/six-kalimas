@@ -19,7 +19,7 @@ export const trackEvent = (eventName: string, parameters?: Record<string, any>) 
 
 export const trackPageView = (url: string) => {
   if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('config', 'GA_TRACKING_ID', {
+    window.gtag('config', 'G-3RF0MWEX04', {
       page_path: url,
     });
   }
