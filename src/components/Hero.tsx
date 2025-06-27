@@ -4,7 +4,7 @@ const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-r from-emerald-600/10 to-amber-600/10 px-0"></div>
       <div className="relative container mx-auto max-w-4xl px-[5px]">
         <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold text-emerald-900 mb-6 leading-tight md:text-5xl">
+          <h1 className="text-3xl font-bold text-emerald-900 mb-2 leading-tight md:text-4xl">
             The Six Kalimas
           </h1>
           <p className="text-xl md:text-2xl text-emerald-700 mb-8 leading-relaxed">
