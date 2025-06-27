@@ -1,54 +1,46 @@
 
-// Analytics and performance monitoring utilities
-export const trackPageView = (pageName: string) => {
-  // Track page views
-  if (typeof gtag !== 'undefined') {
-    gtag('config', 'GA_TRACKING_ID', {
-      page_title: pageName,
-      page_location: window.location.href
-    });
+// Type declarations for gtag
+declare global {
+  interface Window {
+    gtag: (
+      command: 'config' | 'event' | 'js',
+      targetId: string | Date,
+      config?: Record<string, any>
+    ) => void;
   }
-  
-  console.log(`Page view tracked: ${pageName}`);
+}
+
+// Analytics utility functions
+export const trackEvent = (eventName: string, parameters?: Record<string, any>) => {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', eventName, parameters);
+  }
 };
 
-export const trackKalimaView = (kalimaId: number, kalimaName: string) => {
-  // Track which Kalimas are viewed most
-  const views = JSON.parse(localStorage.getItem('kalima-views') || '{}');
-  views[kalimaId] = (views[kalimaId] || 0) + 1;
-  localStorage.setItem('kalima-views', JSON.stringify(views));
-  
-  if (typeof gtag !== 'undefined') {
-    gtag('event', 'kalima_view', {
-      'kalima_id': kalimaId,
-      'kalima_name': kalimaName
+export const trackPageView = (url: string) => {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('config', 'GA_TRACKING_ID', {
+      page_path: url,
     });
   }
-  
-  console.log(`Kalima view tracked: ${kalimaName}`);
 };
 
-export const trackUserEngagement = (action: string, value?: string) => {
-  // Track user engagement events
-  if (typeof gtag !== 'undefined') {
-    gtag('event', action, {
-      'engagement_value': value || ''
-    });
-  }
-  
-  console.log(`User engagement tracked: ${action}`, value);
+export const trackKalimaRead = (kalimaId: number, kalimaName: string) => {
+  trackEvent('kalima_read', {
+    kalima_id: kalimaId,
+    kalima_name: kalimaName,
+  });
 };
 
-export const getPerformanceMetrics = () => {
-  // Get basic performance metrics
-  if ('performance' in window) {
-    const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
-    return {
-      loadTime: navigation.loadEventEnd - navigation.loadEventStart,
-      domContentLoaded: navigation.domContentLoadedEventEnd - navigation.domContentLoadedEventStart,
-      firstPaint: performance.getEntriesByName('first-paint')[0]?.startTime || 0,
-      firstContentfulPaint: performance.getEntriesByName('first-contentful-paint')[0]?.startTime || 0
-    };
-  }
-  return null;
+export const trackSearch = (searchQuery: string) => {
+  trackEvent('search', {
+    search_term: searchQuery,
+  });
+};
+
+export const trackFavorite = (kalimaId: number, action: 'add' | 'remove') => {
+  trackEvent('favorite_kalima', {
+    kalima_id: kalimaId,
+    action: action,
+  });
 };

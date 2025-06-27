@@ -209,7 +209,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Features Section - Moved before Learning Statistics */}
       <section className="py-12 px-4 bg-gradient-to-r from-blue-50 to-purple-50">
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
