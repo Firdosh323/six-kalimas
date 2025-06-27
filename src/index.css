@@ -48,6 +48,9 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Custom font size variable */
+    --font-size-arabic: 16px;
   }
 
   .dark {
@@ -111,4 +114,33 @@
     background-image: radial-gradient(circle at 1px 1px, rgba(34, 197, 94, 0.15) 1px, transparent 0);
     background-size: 20px 20px;
   }
+
+  /* Enhanced features styles */
+  .feature-card {
+    @apply transition-all duration-300 hover:scale-105 hover:shadow-lg;
+  }
+
+  .achievement-unlock {
+    @apply animate-pulse;
+  }
+
+  .reading-progress {
+    @apply transition-all duration-500 ease-in-out;
+  }
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
 }

@@ -8,6 +8,17 @@ import FavoriteButton from '@/components/FavoriteButton';
 import ProgressTracker from '@/components/ProgressTracker';
 import DailyReminder from '@/components/DailyReminder';
 import ShareButton from '@/components/ShareButton';
+import ReadingSpeedTracker from '@/components/ReadingSpeedTracker';
+import BookmarkSystem from '@/components/BookmarkSystem';
+import ThemeToggle from '@/components/ThemeToggle';
+import ReadingGoals from '@/components/ReadingGoals';
+import PronunciationGuide from '@/components/PronunciationGuide';
+import QuizSystem from '@/components/QuizSystem';
+import ReadingStreaks from '@/components/ReadingStreaks';
+import FontSizeControl from '@/components/FontSizeControl';
+import StudyNotes from '@/components/StudyNotes';
+import AchievementSystem from '@/components/AchievementSystem';
+import OfflineModeIndicator from '@/components/OfflineModeIndicator';
 
 const kalimas = [
   {
@@ -153,6 +164,8 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-emerald-50">
+      <OfflineModeIndicator />
+      
       {/* SEO Meta Tags */}
       <div style={{ display: 'none' }}>
         <h1>6 Kalimas of Islam - Sacred Declarations of Faith</h1>
@@ -174,6 +187,7 @@ const Index = () => {
             </div>
             <nav className="hidden md:flex items-center space-x-6">
               <span className="text-sm text-emerald-600">Visits: {visitCount.toLocaleString()}</span>
+              <ThemeToggle />
               <Button onClick={downloadPDF} variant="outline" size="sm">
                 <Download className="w-4 h-4 mr-2" />
                 PDF Guide
@@ -205,6 +219,18 @@ const Index = () => {
 
           <div className="mt-12">
             <ChevronDown className="w-8 h-8 text-emerald-600 mx-auto animate-bounce" />
+          </div>
+        </div>
+      </section>
+
+      {/* Control Panel */}
+      <section className="py-8 px-4 bg-gradient-to-r from-slate-50 to-gray-50">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            <FontSizeControl />
+            <ReadingGoals />
+            <ReadingStreaks />
+            <AchievementSystem />
           </div>
         </div>
       </section>
@@ -248,14 +274,17 @@ const Index = () => {
                       <div className={`w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-xl font-bold`}>
                         {kalima.id}
                       </div>
-                      <FavoriteButton kalimaId={kalima.id} title={kalima.name} />
+                      <div className="flex items-center space-x-2">
+                        <FavoriteButton kalimaId={kalima.id} title={kalima.name} />
+                        <BookmarkSystem kalimaId={kalima.id} title={kalima.name} />
+                      </div>
                     </div>
                     <h3 className="text-xl font-bold mb-2">{kalima.shortTitle}</h3>
                   </div>
                   
                   <div className="p-6 bg-slate-800/90 text-white">
                     <div className="text-right mb-4">
-                      <p className="text-lg font-arabic leading-relaxed" dir="rtl">
+                      <p className="text-lg font-arabic leading-relaxed" dir="rtl" style={{ fontSize: 'var(--font-size-arabic, 16px)' }}>
                         {kalima.arabic.length > 80 ? `${kalima.arabic.substring(0, 80)}...` : kalima.arabic}
                       </p>
                     </div>
@@ -303,18 +332,24 @@ const Index = () => {
                       </div>
                     </div>
 
-                    <div className="p-8 space-y-8">
-                      {/* Audio Player */}
-                      <AudioPlayer kalimaId={kalima.id} title={kalima.name} />
+                    <div className="p-8 space-y-6">
+                      {/* Control Features */}
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <AudioPlayer kalimaId={kalima.id} title={kalima.name} />
+                        <ReadingSpeedTracker kalimaId={kalima.id} />
+                      </div>
 
                       {/* Arabic Text */}
                       <div className="text-center">
                         <div className="bg-gradient-to-r from-amber-50 to-emerald-50 rounded-xl p-8 border border-emerald-100">
-                          <p className="text-2xl md:text-3xl leading-relaxed text-emerald-900 font-arabic" dir="rtl">
+                          <p className="text-2xl md:text-3xl leading-relaxed text-emerald-900 font-arabic" dir="rtl" style={{ fontSize: 'var(--font-size-arabic, 24px)' }}>
                             {kalima.arabic}
                           </p>
                         </div>
                       </div>
+
+                      {/* Pronunciation Guide */}
+                      <PronunciationGuide transliteration={kalima.transliteration} />
 
                       {/* Transliteration */}
                       <div className="bg-gray-50 rounded-xl p-6">
@@ -340,8 +375,19 @@ const Index = () => {
                         </p>
                       </div>
 
-                      {/* Progress Tracker */}
-                      <ProgressTracker kalimaId={kalima.id} title={kalima.name} />
+                      {/* Interactive Features */}
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <ProgressTracker kalimaId={kalima.id} title={kalima.name} />
+                        <QuizSystem 
+                          kalimaId={kalima.id} 
+                          arabic={kalima.arabic}
+                          translation={kalima.translation}
+                          transliteration={kalima.transliteration}
+                        />
+                      </div>
+
+                      {/* Study Notes */}
+                      <StudyNotes kalimaId={kalima.id} />
                     </div>
                   </CardContent>
                 </Card>
@@ -436,6 +482,8 @@ const Index = () => {
                   <li>Progress Tracking</li>
                   <li>Daily Reminders</li>
                   <li>Favorites System</li>
+                  <li>Reading Speed Tracker</li>
+                  <li>Study Notes</li>
                 </ul>
               </div>
               <div>
@@ -445,15 +493,19 @@ const Index = () => {
                   <li>Transliteration</li>
                   <li>English Translation</li>
                   <li>Detailed Meanings</li>
+                  <li>Pronunciation Guide</li>
+                  <li>Interactive Quizzes</li>
                 </ul>
               </div>
               <div>
-                <h4 className="font-semibold mb-3">Share</h4>
+                <h4 className="font-semibold mb-3">Track</h4>
                 <ul className="space-y-2 text-emerald-200 text-sm">
-                  <li>Social Sharing</li>
-                  <li>PDF Downloads</li>
-                  <li>Mobile Friendly</li>
-                  <li>Offline Ready</li>
+                  <li>Reading Goals</li>
+                  <li>Achievement System</li>
+                  <li>Reading Streaks</li>
+                  <li>Bookmark System</li>
+                  <li>Font Size Control</li>
+                  <li>Offline Mode</li>
                 </ul>
               </div>
             </div>
