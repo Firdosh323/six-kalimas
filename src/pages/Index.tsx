@@ -8,6 +8,7 @@ import FavoriteButton from '@/components/FavoriteButton';
 import ProgressTracker from '@/components/ProgressTracker';
 import DailyReminder from '@/components/DailyReminder';
 import ShareButton from '@/components/ShareButton';
+
 const kalimas = [{
   id: 1,
   name: "Kalima Tayyibah",
@@ -69,12 +70,14 @@ const kalimas = [{
   meaning: "This final Kalima serves as a comprehensive rejection of all forms of disbelief and sin, while reaffirming one's commitment to Islamic faith.",
   cardColor: "from-cyan-500 to-blue-600"
 }];
+
 const Index = () => {
   const [activeKalima, setActiveKalima] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredKalimas, setFilteredKalimas] = useState(kalimas);
   const [visitCount, setVisitCount] = useState(0);
   const [kalimaOfTheDay, setKalimaOfTheDay] = useState(kalimas[0]);
+
   useEffect(() => {
     // Set Kalima of the Day based on current date
     const today = new Date();
@@ -108,6 +111,7 @@ const Index = () => {
       document.head.removeChild(script);
     };
   }, []);
+
   const handleSearch = (query: string) => {
     setSearchQuery(query);
     if (query.trim() === '') {
@@ -117,10 +121,12 @@ const Index = () => {
       setFilteredKalimas(filtered);
     }
   };
+
   const clearSearch = () => {
     setSearchQuery('');
     setFilteredKalimas(kalimas);
   };
+
   const scrollToKalima = (id: number) => {
     setActiveKalima(id);
     setTimeout(() => {
@@ -131,13 +137,16 @@ const Index = () => {
       });
     }, 100);
   };
+
   const handleCardClick = (id: number) => {
     scrollToKalima(id);
   };
+
   const downloadPDF = () => {
     console.log('Downloading PDF guide...');
     // In a real implementation, this would trigger a PDF download
   };
+
   return <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-emerald-50">
       {/* SEO Meta Tags */}
       <div style={{
@@ -208,8 +217,8 @@ const Index = () => {
       </section>
 
       {/* Kalima of the Day */}
-      <section className="py-4 px-4">
-        <div className="container mx-auto max-w-4xl px-0">
+      <section className="py-4 px-2">
+        <div className="container mx-auto max-w-4xl px-2">
           <div className={`bg-gradient-to-r ${kalimaOfTheDay.cardColor} rounded-2xl p-8 text-white relative overflow-hidden`}>
             <div className="flex items-start space-x-3 mb-0.5 px-0">
               <div className="bg-white/20 rounded-full p-2">
@@ -483,4 +492,5 @@ const Index = () => {
       </footer>
     </div>;
 };
+
 export default Index;
