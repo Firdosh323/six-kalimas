@@ -3,11 +3,13 @@ import { Trophy, Bell } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import SearchBar from '@/components/SearchBar';
 import { kalimas } from '@/data/kalimas';
+import { duas } from '@/data/duas';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import KalimaOfTheDay from '@/components/KalimaOfTheDay';
 import KalimasGrid from '@/components/KalimasGrid';
 import KalimaDetail from '@/components/KalimaDetail';
+import DuaDetail from '@/components/DuaDetail';
 import Features from '@/components/Features';
 import Statistics from '@/components/Statistics';
 import FAQ from '@/components/FAQ';
@@ -17,17 +19,44 @@ import { useNavigate } from 'react-router-dom';
 const Index = () => {
   const navigate = useNavigate();
   const [activeKalima, setActiveKalima] = useState<number | null>(null);
+  const [activeDua, setActiveDua] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredKalimas, setFilteredKalimas] = useState(kalimas);
   const [visitCount, setVisitCount] = useState(0);
-  const [kalimaOfTheDay, setKalimaOfTheDay] = useState(kalimas[0]);
+  const [dailyContent, setDailyContent] = useState<{
+    id: number;
+    shortTitle: string;
+    meaning: string;
+    type: 'kalima' | 'dua';
+  } | null>(null);
 
   useEffect(() => {
-    // Set Kalima of the Day based on current date
+    // Determine if today should show Kalima or Dua based on date
     const today = new Date();
     const dayOfYear = Math.floor((today.getTime() - new Date(today.getFullYear(), 0, 0).getTime()) / (1000 * 60 * 60 * 24));
-    const kalimaIndex = dayOfYear % kalimas.length;
-    setKalimaOfTheDay(kalimas[kalimaIndex]);
+    
+    // Alternate between kalima and dua every day
+    const isKalimaDay = dayOfYear % 2 === 0;
+    
+    if (isKalimaDay) {
+      const kalimaIndex = Math.floor(dayOfYear / 2) % kalimas.length;
+      const selectedKalima = kalimas[kalimaIndex];
+      setDailyContent({
+        id: selectedKalima.id,
+        shortTitle: selectedKalima.shortTitle,
+        meaning: selectedKalima.meaning,
+        type: 'kalima'
+      });
+    } else {
+      const duaIndex = Math.floor(dayOfYear / 2) % duas.length;
+      const selectedDua = duas[duaIndex];
+      setDailyContent({
+        id: selectedDua.id,
+        shortTitle: selectedDua.shortTitle,
+        meaning: selectedDua.meaning,
+        type: 'dua'
+      });
+    }
 
     // SEO: Add structured data with enhanced keywords
     const structuredData = {
@@ -99,7 +128,6 @@ const Index = () => {
   };
 
   const scrollToKalima = (id: number) => {
-    // Navigate to individual Kalima page instead of scrolling
     navigate(`/kalima/${id}`);
   };
 
@@ -107,11 +135,20 @@ const Index = () => {
     navigate(`/kalima/${id}`);
   };
 
+  const handleReadMore = (id: number, type: 'kalima' | 'dua') => {
+    if (type === 'kalima') {
+      setActiveKalima(id);
+    } else {
+      setActiveDua(id);
+    }
+  };
+
   const downloadPDF = () => {
     console.log('Downloading PDF guide...');
   };
 
   const selectedKalima = activeKalima ? kalimas.find(k => k.id === activeKalima) : null;
+  const selectedDua = activeDua ? duas.find(d => d.id === activeDua) : null;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-emerald-50">
@@ -134,7 +171,9 @@ const Index = () => {
           </div>
         </section>
 
-        <KalimaOfTheDay kalima={kalimaOfTheDay} onReadMore={scrollToKalima} />
+        {dailyContent && (
+          <KalimaOfTheDay content={dailyContent} onReadMore={handleReadMore} />
+        )}
 
         <KalimasGrid 
           kalimas={filteredKalimas} 
@@ -147,6 +186,14 @@ const Index = () => {
           <KalimaDetail 
             kalima={selectedKalima} 
             onClose={() => setActiveKalima(null)} 
+          />
+        )}
+
+        {/* Detailed Dua Section */}
+        {activeDua && selectedDua && (
+          <DuaDetail 
+            dua={selectedDua} 
+            onClose={() => setActiveDua(null)} 
           />
         )}
 
