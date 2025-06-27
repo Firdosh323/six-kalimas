@@ -1,5 +1,8 @@
 
 import { Card, CardContent } from '@/components/ui/card';
+import { Copy } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { useToast } from '@/hooks/use-toast';
 import AudioPlayer from '@/components/AudioPlayer';
 import ShareButton from '@/components/ShareButton';
 import ProgressTracker from '@/components/ProgressTracker';
@@ -20,6 +23,31 @@ interface KalimaDetailProps {
 }
 
 const KalimaDetail = ({ kalima, onClose }: KalimaDetailProps) => {
+  const { toast } = useToast();
+
+  const copyToClipboard = async (text: string, label: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      toast({
+        title: "Copied!",
+        description: `${label} copied to clipboard`,
+      });
+    } catch (err) {
+      // Fallback for older browsers
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      
+      toast({
+        title: "Copied!",
+        description: `${label} copied to clipboard`,
+      });
+    }
+  };
+
   return (
     <section className="py-16 px-4 bg-gradient-to-r from-emerald-50 to-amber-50">
       <div className="container mx-auto max-w-6xl">
@@ -51,7 +79,15 @@ const KalimaDetail = ({ kalima, onClose }: KalimaDetailProps) => {
 
               {/* Arabic Text */}
               <div className="text-center">
-                <div className="bg-gradient-to-r from-amber-50 to-emerald-50 rounded-xl p-8 border border-emerald-100">
+                <div className="bg-gradient-to-r from-amber-50 to-emerald-50 rounded-xl p-8 border border-emerald-100 relative">
+                  <Button
+                    onClick={() => copyToClipboard(kalima.arabic, 'Arabic text')}
+                    variant="ghost"
+                    size="sm"
+                    className="absolute top-2 right-2 text-emerald-600 hover:text-emerald-800"
+                  >
+                    <Copy size={16} />
+                  </Button>
                   <p className="text-2xl md:text-3xl leading-relaxed text-emerald-900 font-arabic" dir="rtl">
                     {kalima.arabic}
                   </p>
@@ -59,7 +95,15 @@ const KalimaDetail = ({ kalima, onClose }: KalimaDetailProps) => {
               </div>
 
               {/* Transliteration */}
-              <div className="bg-gray-50 rounded-xl p-6">
+              <div className="bg-gray-50 rounded-xl p-6 relative">
+                <Button
+                  onClick={() => copyToClipboard(kalima.transliteration, 'Transliteration')}
+                  variant="ghost"
+                  size="sm"
+                  className="absolute top-2 right-2 text-gray-600 hover:text-gray-800"
+                >
+                  <Copy size={16} />
+                </Button>
                 <h4 className="font-semibold text-emerald-800 mb-3">Transliteration:</h4>
                 <p className="text-lg text-gray-700 italic leading-relaxed">
                   {kalima.transliteration}
@@ -67,7 +111,15 @@ const KalimaDetail = ({ kalima, onClose }: KalimaDetailProps) => {
               </div>
 
               {/* Translation */}
-              <div className="bg-emerald-50 rounded-xl p-6">
+              <div className="bg-emerald-50 rounded-xl p-6 relative">
+                <Button
+                  onClick={() => copyToClipboard(kalima.translation, 'Translation')}
+                  variant="ghost"
+                  size="sm"
+                  className="absolute top-2 right-2 text-emerald-600 hover:text-emerald-800"
+                >
+                  <Copy size={16} />
+                </Button>
                 <h4 className="font-semibold text-emerald-800 mb-3">Translation:</h4>
                 <p className="text-lg text-emerald-900 leading-relaxed">
                   "{kalima.translation}"
@@ -75,7 +127,15 @@ const KalimaDetail = ({ kalima, onClose }: KalimaDetailProps) => {
               </div>
 
               {/* Meaning */}
-              <div className="bg-blue-50 rounded-xl p-6">
+              <div className="bg-blue-50 rounded-xl p-6 relative">
+                <Button
+                  onClick={() => copyToClipboard(kalima.meaning, 'Meaning')}
+                  variant="ghost"
+                  size="sm"
+                  className="absolute top-2 right-2 text-blue-600 hover:text-blue-800"
+                >
+                  <Copy size={16} />
+                </Button>
                 <h4 className="font-semibold text-blue-800 mb-3">Meaning:</h4>
                 <p className="text-gray-700 leading-relaxed">
                   {kalima.meaning}
@@ -83,7 +143,15 @@ const KalimaDetail = ({ kalima, onClose }: KalimaDetailProps) => {
               </div>
 
               {/* Deeper Meaning (Tafsir) */}
-              <div className="bg-amber-50 rounded-xl p-6">
+              <div className="bg-amber-50 rounded-xl p-6 relative">
+                <Button
+                  onClick={() => copyToClipboard(kalima.tafsir, 'Deeper Meaning (Tafsir)')}
+                  variant="ghost"
+                  size="sm"
+                  className="absolute top-2 right-2 text-amber-600 hover:text-amber-800"
+                >
+                  <Copy size={16} />
+                </Button>
                 <h4 className="font-semibold text-amber-800 mb-3">Deeper Meaning (Tafsir):</h4>
                 <p className="text-gray-700 leading-relaxed">
                   {kalima.tafsir}
