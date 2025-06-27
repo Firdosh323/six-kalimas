@@ -53,7 +53,7 @@ const kalimas = [{
   name: "Kalima Istighfar",
   title: "The Seeking of Forgiveness",
   shortTitle: "Fifth Kalima - Astaghfar",
-  arabic: "أَسْتَغْفِرُ اللّٰهَ رَبِّي مِنْ كُلِّ ذَنْبٍ أَذْنَبْتُهُ عَمْدًا أَوْ خَطَأً سِرًّا أَوْ عَلَانِيَةً وَأَتُوبُ إِلَيْهِ مِنَ الذَّنْبِ الَّذِي أَعْلَمُ وَمِنَ الذَّنْبِ الَّذِي لَا أَعْلَمُ إِنَّكَ أَنْتَ عَلَّامُ الْغُيُوبِ وَسَتَّارُ الْعُيُوبِ وَغَفَّارُ الذُّنُوبِ وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللّٰهِ الْعَلِيِّ الْعَظِيمِ",
+  arabic: "أَسْتَغْفِرُ اللّٰهَ رَبِّي مِنْ كُلِّ ذَنْبٍ أَذْنَبْتُهُ عَمْدًا أَوْ خَطَأً سِرًّا أَوْ عَلَانِيَةً وَأَتُوبُ إِلَيْهِ مِنَ الذَّنْبِ الَّذِي أَعْلَمُ وَمِنَ الذَّنْبِ الَّذِي لَا أَعْلَمُ إِنَّكَ أَنْتَ عَلَّامُ الْغُيُوبِ وَسَتَّارُ الْعُيُوبِ وَغَفَّارُ الذُّنُوبِ وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللّٰهِ الْعَالِيِّ الْعَظِيمِ",
   transliteration: "Astaghfiru Allah rabbi min kulli dhanbin adhnabtahu amdan aw khata'an sirran aw alaniyatan wa atubu ilayhi min adh-dhanbi alladhi a'lamu wa min adh-dhanbi alladhi la a'lamu innaka anta allamu al-ghuyubi wa sattaru al-uyubi wa ghaffaru adh-dhunubi wa la hawla wa la quwwata illa billahi al-ali al-azeem",
   translation: "I seek forgiveness from Allah, my Lord, for every sin I committed knowingly or unknowingly, secretly or openly, and I turn to Him from the sin which I know and from the sin which I do not know. Indeed You are the Knower of the hidden things and the Concealer of faults and the Forgiver of sins, and there is no power and no strength except with Allah, the Most High, the Most Great",
   meaning: "This Kalima is a comprehensive prayer for forgiveness, acknowledging all types of sins and seeking Allah's mercy and forgiveness.",
@@ -199,7 +199,7 @@ const Index = () => {
 
       {/* Ad Placeholder */}
       <section className="py-[5px] px-2 mx-[2px]">
-        <div className="container mx-auto max-w-2xl px-0">
+        <div className="container mx-auto max-w-2xl px-2">
           <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
             <h3 className="text-lg font-semibold text-gray-600 mb-2">Ad Placeholder</h3>
             <p className="text-gray-500">Your AdSense ad could be displayed here.</p>
