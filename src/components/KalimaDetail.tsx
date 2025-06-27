@@ -13,6 +13,7 @@ interface KalimaDetailProps {
     transliteration: string;
     translation: string;
     meaning: string;
+    tafsir: string;
     cardColor: string;
   };
   onClose: () => void;
@@ -74,10 +75,18 @@ const KalimaDetail = ({ kalima, onClose }: KalimaDetailProps) => {
               </div>
 
               {/* Meaning */}
-              <div className="bg-amber-50 rounded-xl p-6">
-                <h4 className="font-semibold text-amber-800 mb-3">Significance:</h4>
+              <div className="bg-blue-50 rounded-xl p-6">
+                <h4 className="font-semibold text-blue-800 mb-3">Meaning:</h4>
                 <p className="text-gray-700 leading-relaxed">
                   {kalima.meaning}
+                </p>
+              </div>
+
+              {/* Deeper Meaning (Tafsir) */}
+              <div className="bg-amber-50 rounded-xl p-6">
+                <h4 className="font-semibold text-amber-800 mb-3">Deeper Meaning (Tafsir):</h4>
+                <p className="text-gray-700 leading-relaxed">
+                  {kalima.tafsir}
                 </p>
               </div>
 
