@@ -8,82 +8,72 @@ import FavoriteButton from '@/components/FavoriteButton';
 import ProgressTracker from '@/components/ProgressTracker';
 import DailyReminder from '@/components/DailyReminder';
 import ShareButton from '@/components/ShareButton';
-
-const kalimas = [
-  {
-    id: 1,
-    name: "Kalima Tayyibah",
-    title: "The Word of Purity",
-    shortTitle: "First Kalima - Tayyab",
-    arabic: "لَا إِلٰهَ إِلَّا اللّٰهُ مُحَمَّدٌ رَسُولُ اللّٰهِ",
-    transliteration: "La ilaha illa Allah, Muhammadur rasul Allah",
-    translation: "There is no god but Allah, Muhammad is the messenger of Allah",
-    meaning: "This is the fundamental declaration of faith in Islam, affirming the oneness of Allah and the prophethood of Muhammad (PBUH).",
-    cardColor: "from-emerald-500 to-teal-600"
-  },
-  {
-    id: 2,
-    name: "Kalima Shahadat",
-    title: "The Testimony",
-    shortTitle: "Second Kalima - Shahadat",
-    arabic: "أَشْهَدُ أَنْ لَا إِلٰهَ إِلَّا اللّٰهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
-    transliteration: "Ashhadu an la ilaha illa Allah wa ashhadu anna Muhammadan abduhu wa rasuluh",
-    translation: "I bear witness that there is no god but Allah, and I bear witness that Muhammad is His servant and messenger",
-    meaning: "This extends the first Kalima by adding personal testimony and acknowledging Muhammad (PBUH) as both servant and messenger of Allah.",
-    cardColor: "from-blue-500 to-indigo-600"
-  },
-  {
-    id: 3,
-    name: "Kalima Tamjeed",
-    title: "The Glorification",
-    shortTitle: "Third Kalima - Tamjeed",
-    arabic: "سُبْحَانَ اللّٰهِ وَالْحَمْدُ لِلّٰهِ وَلَا إِلٰهَ إِلَّا اللّٰهُ وَاللّٰهُ أَكْبَرُ وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللّٰهِ الْعَلِيِّ الْعَظِيمِ",
-    transliteration: "Subhan Allah wa al-hamdu lillahi wa la ilaha illa Allah wa Allahu akbar wa la hawla wa la quwwata illa billahi al-ali al-azeem",
-    translation: "Glory be to Allah, and praise be to Allah, and there is no god but Allah, and Allah is the Greatest, and there is no power and no strength except with Allah, the Most High, the Most Great",
-    meaning: "This Kalima combines various forms of praise and glorification of Allah, acknowledging His supreme power and greatness.",
-    cardColor: "from-purple-500 to-violet-600"
-  },
-  {
-    id: 4,
-    name: "Kalima Tawheed",
-    title: "The Unity",
-    shortTitle: "Fourth Kalima - Tawheed",
-    arabic: "لَا إِلٰهَ إِلَّا اللّٰهُ وَحْدَهُ لَا شَرِيكَ لَهُ لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ يُحْيِي وَيُمِيتُ وَهُوَ حَيٌّ لَا يَمُوتُ أَبَدًا أَبَدًا ذُو الْجَلَالِ وَالْإِكْرَامِ بِيَدِهِ الْخَيْرُ وَهُوَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ",
-    transliteration: "La ilaha illa Allah wahdahu la sharika lahu lahu al-mulku wa lahu al-hamdu yuhyi wa yumitu wa huwa hayyun la yamutu abadan abada dhu al-jalali wa al-ikram biyadihi al-khayr wa huwa ala kulli shay'in qadeer",
-    translation: "There is no god but Allah alone, He has no partner, His is the dominion and His is the praise, He gives life and causes death, and He is alive and does not die, ever and forever, Owner of Majesty and Honor, in His hand is all good and He has power over all things",
-    meaning: "This Kalima emphasizes the absolute unity and sovereignty of Allah, His eternal nature, and His complete control over life and death.",
-    cardColor: "from-orange-500 to-amber-600"
-  },
-  {
-    id: 5,
-    name: "Kalima Istighfar",
-    title: "The Seeking of Forgiveness",
-    shortTitle: "Fifth Kalima - Astaghfar",
-    arabic: "أَسْتَغْفِرُ اللّٰهَ رَبِّي مِنْ كُلِّ ذَنْبٍ أَذْنَبْتُهُ عَمْدًا أَوْ خَطَأً سِرًّا أَوْ عَلَانِيَةً وَأَتُوبُ إِلَيْهِ مِنَ الذَّنْبِ الَّذِي أَعْلَمُ وَمِنَ الذَّنْبِ الَّذِي لَا أَعْلَمُ إِنَّكَ أَنْتَ عَلَّامُ الْغُيُوبِ وَسَتَّارُ الْعُيُوبِ وَغَفَّارُ الذُّنُوبِ وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللّٰهِ الْعَلِيِّ الْعَظِيمِ",
-    transliteration: "Astaghfiru Allah rabbi min kulli dhanbin adhnabtahu amdan aw khata'an sirran aw alaniyatan wa atubu ilayhi min adh-dhanbi alladhi a'lamu wa min adh-dhanbi alladhi la a'lamu innaka anta allamu al-ghuyubi wa sattaru al-uyubi wa ghaffaru adh-dhunubi wa la hawla wa la quwwata illa billahi al-ali al-azeem",
-    translation: "I seek forgiveness from Allah, my Lord, for every sin I committed knowingly or unknowingly, secretly or openly, and I turn to Him from the sin which I know and from the sin which I do not know. Indeed You are the Knower of the hidden things and the Concealer of faults and the Forgiver of sins, and there is no power and no strength except with Allah, the Most High, the Most Great",
-    meaning: "This Kalima is a comprehensive prayer for forgiveness, acknowledging all types of sins and seeking Allah's mercy and forgiveness.",
-    cardColor: "from-pink-500 to-rose-600"
-  },
-  {
-    id: 6,
-    name: "Kalima Radde Kufr",
-    title: "The Rejection of Disbelief",
-    shortTitle: "Sixth Kalima - Rad-de-Kufr",
-    arabic: "اللّٰهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ أَنْ أُشْرِكَ بِكَ شَيْئًا وَأَنَا أَعْلَمُ بِهِ وَأَسْتَغْفِرُكَ لِمَا لَا أَعْلَمُ بِهِ تُبْتُ عَنْهُ وَتَبَرَّأْتُ مِنَ الْكُفْرِ وَالشِّرْكِ وَالْكَذِبِ وَالْغِيبَةِ وَالْبِدْعَةِ وَالنَّمِيمَةِ وَالْفَوَاحِشِ وَالْبُهْتَانِ وَالْمَعَاصِي كُلِّهَا وَأَسْلَمْتُ وَأَقُولُ لَا إِلٰهَ إِلَّا اللّٰهُ مُحَمَّدٌ رَسُولُ اللّٰهِ",
-    transliteration: "Allahumma inni a'udhu bika min an ushrika bika shay'an wa ana a'lamu bihi wa astaghfiruka lima la a'lamu bihi tubtu anhu wa tabarra'tu min al-kufri wa ash-shirki wa al-kadhib wa al-ghiba wa al-bid'a wa an-namima wa al-fawahish wa al-buhtan wa al-ma'asi kulliha wa aslamtu wa aqulu la ilaha illa Allah Muhammadur rasul Allah",
-    translation: "O Allah, I seek refuge in You from associating anything with You knowingly, and I seek Your forgiveness for what I do not know. I repent from it and I disassociate myself from disbelief and polytheism and falsehood and backbiting and innovation and tale-bearing and indecencies and slander and all sins, and I submit, and I say there is no god but Allah, Muhammad is the messenger of Allah",
-    meaning: "This final Kalima serves as a comprehensive rejection of all forms of disbelief and sin, while reaffirming one's commitment to Islamic faith.",
-    cardColor: "from-cyan-500 to-blue-600"
-  }
-];
-
+const kalimas = [{
+  id: 1,
+  name: "Kalima Tayyibah",
+  title: "The Word of Purity",
+  shortTitle: "First Kalima - Tayyab",
+  arabic: "لَا إِلٰهَ إِلَّا اللّٰهُ مُحَمَّدٌ رَسُولُ اللّٰهِ",
+  transliteration: "La ilaha illa Allah, Muhammadur rasul Allah",
+  translation: "There is no god but Allah, Muhammad is the messenger of Allah",
+  meaning: "This is the fundamental declaration of faith in Islam, affirming the oneness of Allah and the prophethood of Muhammad (PBUH).",
+  cardColor: "from-emerald-500 to-teal-600"
+}, {
+  id: 2,
+  name: "Kalima Shahadat",
+  title: "The Testimony",
+  shortTitle: "Second Kalima - Shahadat",
+  arabic: "أَشْهَدُ أَنْ لَا إِلٰهَ إِلَّا اللّٰهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+  transliteration: "Ashhadu an la ilaha illa Allah wa ashhadu anna Muhammadan abduhu wa rasuluh",
+  translation: "I bear witness that there is no god but Allah, and I bear witness that Muhammad is His servant and messenger",
+  meaning: "This extends the first Kalima by adding personal testimony and acknowledging Muhammad (PBUH) as both servant and messenger of Allah.",
+  cardColor: "from-blue-500 to-indigo-600"
+}, {
+  id: 3,
+  name: "Kalima Tamjeed",
+  title: "The Glorification",
+  shortTitle: "Third Kalima - Tamjeed",
+  arabic: "سُبْحَانَ اللّٰهِ وَالْحَمْدُ لِلّٰهِ وَلَا إِلٰهَ إِلَّا اللّٰهُ وَاللّٰهُ أَكْبَرُ وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللّٰهِ الْعَلِيِّ الْعَظِيمِ",
+  transliteration: "Subhan Allah wa al-hamdu lillahi wa la ilaha illa Allah wa Allahu akbar wa la hawla wa la quwwata illa billahi al-ali al-azeem",
+  translation: "Glory be to Allah, and praise be to Allah, and there is no god but Allah, and Allah is the Greatest, and there is no power and no strength except with Allah, the Most High, the Most Great",
+  meaning: "This Kalima combines various forms of praise and glorification of Allah, acknowledging His supreme power and greatness.",
+  cardColor: "from-purple-500 to-violet-600"
+}, {
+  id: 4,
+  name: "Kalima Tawheed",
+  title: "The Unity",
+  shortTitle: "Fourth Kalima - Tawheed",
+  arabic: "لَا إِلٰهَ إِلَّا اللّٰهُ وَحْدَهُ لَا شَرِيكَ لَهُ لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ يُحْيِي وَيُمِيتُ وَهُوَ حَيٌّ لَا يَمُوتُ أَبَدًا أَبَدًا ذُو الْجَلَالِ وَالْإِكْرَامِ بِيَدِهِ الْخَيْرُ وَهُوَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ",
+  transliteration: "La ilaha illa Allah wahdahu la sharika lahu lahu al-mulku wa lahu al-hamdu yuhyi wa yumitu wa huwa hayyun la yamutu abadan abada dhu al-jalali wa al-ikram biyadihi al-khayr wa huwa ala kulli shay'in qadeer",
+  translation: "There is no god but Allah alone, He has no partner, His is the dominion and His is the praise, He gives life and causes death, and He is alive and does not die, ever and forever, Owner of Majesty and Honor, in His hand is all good and He has power over all things",
+  meaning: "This Kalima emphasizes the absolute unity and sovereignty of Allah, His eternal nature, and His complete control over life and death.",
+  cardColor: "from-orange-500 to-amber-600"
+}, {
+  id: 5,
+  name: "Kalima Istighfar",
+  title: "The Seeking of Forgiveness",
+  shortTitle: "Fifth Kalima - Astaghfar",
+  arabic: "أَسْتَغْفِرُ اللّٰهَ رَبِّي مِنْ كُلِّ ذَنْبٍ أَذْنَبْتُهُ عَمْدًا أَوْ خَطَأً سِرًّا أَوْ عَلَانِيَةً وَأَتُوبُ إِلَيْهِ مِنَ الذَّنْبِ الَّذِي أَعْلَمُ وَمِنَ الذَّنْبِ الَّذِي لَا أَعْلَمُ إِنَّكَ أَنْتَ عَلَّامُ الْغُيُوبِ وَسَتَّارُ الْعُيُوبِ وَغَفَّارُ الذُّنُوبِ وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللّٰهِ الْعَلِيِّ الْعَظِيمِ",
+  transliteration: "Astaghfiru Allah rabbi min kulli dhanbin adhnabtahu amdan aw khata'an sirran aw alaniyatan wa atubu ilayhi min adh-dhanbi alladhi a'lamu wa min adh-dhanbi alladhi la a'lamu innaka anta allamu al-ghuyubi wa sattaru al-uyubi wa ghaffaru adh-dhunubi wa la hawla wa la quwwata illa billahi al-ali al-azeem",
+  translation: "I seek forgiveness from Allah, my Lord, for every sin I committed knowingly or unknowingly, secretly or openly, and I turn to Him from the sin which I know and from the sin which I do not know. Indeed You are the Knower of the hidden things and the Concealer of faults and the Forgiver of sins, and there is no power and no strength except with Allah, the Most High, the Most Great",
+  meaning: "This Kalima is a comprehensive prayer for forgiveness, acknowledging all types of sins and seeking Allah's mercy and forgiveness.",
+  cardColor: "from-pink-500 to-rose-600"
+}, {
+  id: 6,
+  name: "Kalima Radde Kufr",
+  title: "The Rejection of Disbelief",
+  shortTitle: "Sixth Kalima - Rad-de-Kufr",
+  arabic: "اللّٰهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ أَنْ أُشْرِكَ بِكَ شَيْئًا وَأَنَا أَعْلَمُ بِهِ وَأَسْتَغْفِرُكَ لِمَا لَا أَعْلَمُ بِهِ تُبْتُ عَنْهُ وَتَبَرَّأْتُ مِنَ الْكُفْرِ وَالشِّرْكِ وَالْكَذِبِ وَالْغِيبَةِ وَالْبِدْعَةِ وَالنَّمِيمَةِ وَالْفَوَاحِشِ وَالْبُهْتَانِ وَالْمَعَاصِي كُلِّهَا وَأَسْلَمْتُ وَأَقُولُ لَا إِلٰهَ إِلَّا اللّٰهُ مُحَمَّدٌ رَسُولُ اللّٰهِ",
+  transliteration: "Allahumma inni a'udhu bika min an ushrika bika shay'an wa ana a'lamu bihi wa astaghfiruka lima la a'lamu bihi tubtu anhu wa tabarra'tu min al-kufri wa ash-shirki wa al-kadhib wa al-ghiba wa al-bid'a wa an-namima wa al-fawahish wa al-buhtan wa al-ma'asi kulliha wa aslamtu wa aqulu la ilaha illa Allah Muhammadur rasul Allah",
+  translation: "O Allah, I seek refuge in You from associating anything with You knowingly, and I seek Your forgiveness for what I do not know. I repent from it and I disassociate myself from disbelief and polytheism and falsehood and backbiting and innovation and tale-bearing and indecencies and slander and all sins, and I submit, and I say there is no god but Allah, Muhammad is the messenger of Allah",
+  meaning: "This final Kalima serves as a comprehensive rejection of all forms of disbelief and sin, while reaffirming one's commitment to Islamic faith.",
+  cardColor: "from-cyan-500 to-blue-600"
+}];
 const Index = () => {
   const [activeKalima, setActiveKalima] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredKalimas, setFilteredKalimas] = useState(kalimas);
   const [visitCount, setVisitCount] = useState(0);
-
   useEffect(() => {
     // SEO: Add structured data
     const structuredData = {
@@ -98,7 +88,6 @@ const Index = () => {
         "query-input": "required name=search_term_string"
       }
     };
-
     const script = document.createElement('script');
     script.type = 'application/ld+json';
     script.innerHTML = JSON.stringify(structuredData);
@@ -108,53 +97,45 @@ const Index = () => {
     const visits = parseInt(localStorage.getItem('site-visits') || '0') + 1;
     localStorage.setItem('site-visits', visits.toString());
     setVisitCount(visits);
-
     return () => {
       document.head.removeChild(script);
     };
   }, []);
-
   const handleSearch = (query: string) => {
     setSearchQuery(query);
     if (query.trim() === '') {
       setFilteredKalimas(kalimas);
     } else {
-      const filtered = kalimas.filter(kalima =>
-        kalima.name.toLowerCase().includes(query.toLowerCase()) ||
-        kalima.title.toLowerCase().includes(query.toLowerCase()) ||
-        kalima.translation.toLowerCase().includes(query.toLowerCase()) ||
-        kalima.transliteration.toLowerCase().includes(query.toLowerCase())
-      );
+      const filtered = kalimas.filter(kalima => kalima.name.toLowerCase().includes(query.toLowerCase()) || kalima.title.toLowerCase().includes(query.toLowerCase()) || kalima.translation.toLowerCase().includes(query.toLowerCase()) || kalima.transliteration.toLowerCase().includes(query.toLowerCase()));
       setFilteredKalimas(filtered);
     }
   };
-
   const clearSearch = () => {
     setSearchQuery('');
     setFilteredKalimas(kalimas);
   };
-
   const scrollToKalima = (id: number) => {
     setActiveKalima(id);
     setTimeout(() => {
       const element = document.getElementById(`kalima-${id}`);
-      element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      element?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
     }, 100);
   };
-
   const handleCardClick = (id: number) => {
     scrollToKalima(id);
   };
-
   const downloadPDF = () => {
     console.log('Downloading PDF guide...');
     // In a real implementation, this would trigger a PDF download
   };
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-emerald-50">
+  return <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-emerald-50">
       {/* SEO Meta Tags */}
-      <div style={{ display: 'none' }}>
+      <div style={{
+      display: 'none'
+    }}>
         <h1>6 Kalimas of Islam - Sacred Declarations of Faith</h1>
         <p>Learn the Six Kalimas: Tayyibah, Shahadat, Tamjeed, Tawheed, Istighfar, and Radde Kufr. Complete with Arabic text, transliteration, translation, and meanings.</p>
       </div>
@@ -197,7 +178,7 @@ const Index = () => {
             <div className="w-24 h-1 bg-gradient-to-r from-emerald-600 to-amber-600 mx-auto rounded-full"></div>
           </div>
           
-          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-emerald-100">
+          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-emerald-100 px-[5px] py-[5px]">
             <p className="text-lg text-emerald-800 leading-relaxed">
               The Six Kalimas are fundamental Islamic declarations that express the core beliefs of Islam. Each Kalima serves a unique purpose in strengthening faith, seeking forgiveness, and affirming the oneness of Allah.
             </p>
@@ -213,11 +194,9 @@ const Index = () => {
       <section className="py-8 px-4">
         <div className="container mx-auto max-w-4xl">
           <SearchBar onSearch={handleSearch} onClear={clearSearch} />
-          {searchQuery && (
-            <p className="text-center mt-4 text-emerald-700">
+          {searchQuery && <p className="text-center mt-4 text-emerald-700">
               Found {filteredKalimas.length} result{filteredKalimas.length !== 1 ? 's' : ''} for "{searchQuery}"
-            </p>
-          )}
+            </p>}
         </div>
       </section>
 
@@ -234,14 +213,7 @@ const Index = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-            {filteredKalimas.map((kalima) => (
-              <Card
-                key={kalima.id}
-                className={`cursor-pointer transform hover:scale-105 transition-all duration-300 hover:shadow-2xl border-0 overflow-hidden ${
-                  activeKalima === kalima.id ? 'ring-4 ring-emerald-400 scale-105' : ''
-                }`}
-                onClick={() => handleCardClick(kalima.id)}
-              >
+            {filteredKalimas.map(kalima => <Card key={kalima.id} className={`cursor-pointer transform hover:scale-105 transition-all duration-300 hover:shadow-2xl border-0 overflow-hidden ${activeKalima === kalima.id ? 'ring-4 ring-emerald-400 scale-105' : ''}`} onClick={() => handleCardClick(kalima.id)}>
                 <CardContent className="p-0">
                   <div className={`bg-gradient-to-br ${kalima.cardColor} text-white p-6 relative`}>
                     <div className="flex items-center justify-between mb-4">
@@ -261,24 +233,15 @@ const Index = () => {
                     </div>
                   </div>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </section>
 
       {/* Detailed Kalimas Section */}
-      {activeKalima && (
-        <section className="py-16 px-4 bg-gradient-to-r from-emerald-50 to-amber-50">
+      {activeKalima && <section className="py-16 px-4 bg-gradient-to-r from-emerald-50 to-amber-50">
           <div className="container mx-auto max-w-6xl">
-            {kalimas
-              .filter((kalima) => kalima.id === activeKalima)
-              .map((kalima) => (
-                <Card
-                  key={kalima.id}
-                  id={`kalima-${kalima.id}`}
-                  className="overflow-hidden shadow-2xl border-0 bg-white/90 backdrop-blur-sm animate-fade-in"
-                >
+            {kalimas.filter(kalima => kalima.id === activeKalima).map(kalima => <Card key={kalima.id} id={`kalima-${kalima.id}`} className="overflow-hidden shadow-2xl border-0 bg-white/90 backdrop-blur-sm animate-fade-in">
                   <CardContent className="p-0">
                     <div className={`bg-gradient-to-r ${kalima.cardColor} text-white p-8`}>
                       <div className="flex items-center justify-between mb-4">
@@ -293,10 +256,7 @@ const Index = () => {
                         </div>
                         <div className="flex items-center space-x-2">
                           <ShareButton kalimaId={kalima.id} title={kalima.name} />
-                          <button
-                            onClick={() => setActiveKalima(null)}
-                            className="text-white/70 hover:text-white transition-colors text-2xl"
-                          >
+                          <button onClick={() => setActiveKalima(null)} className="text-white/70 hover:text-white transition-colors text-2xl">
                             ×
                           </button>
                         </div>
@@ -344,11 +304,9 @@ const Index = () => {
                       <ProgressTracker kalimaId={kalima.id} title={kalima.name} />
                     </div>
                   </CardContent>
-                </Card>
-              ))}
+                </Card>)}
           </div>
-        </section>
-      )}
+        </section>}
 
       {/* Features Section - Moved before Learning Statistics */}
       <section className="py-12 px-4 bg-gradient-to-r from-blue-50 to-purple-50">
@@ -467,8 +425,6 @@ const Index = () => {
           </div>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
