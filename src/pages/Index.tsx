@@ -184,7 +184,7 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="mt-12 my-[10px]">
+          <div className="mt-12 my-[12px]">
             <ChevronDown className="w-8 h-8 text-emerald-600 mx-auto animate-bounce" />
           </div>
         </div>
