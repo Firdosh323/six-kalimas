@@ -209,7 +209,7 @@ const Index = () => {
 
       {/* Kalima of the Day */}
       <section className="py-4 px-4">
-        <div className="container mx-auto max-w-2xl px-0">
+        <div className="container mx-2px max-w-1xl px-0">
           <div className="p-6 rounded-2xl border bg-gradient-to-tr from-blue-500 to-indigo-600 from-opacity-20 to-opacity-5 border-white text-white relative overflow-hidden">
             <div className="flex items-start space-x-3 mb-0.5 px-0">
               <div className="bg-white/20 rounded-full p-2">
