@@ -198,7 +198,7 @@ const Index = () => {
       </section>
 
       {/* Ad Placeholder */}
-      <section className="py-4 px-4">
+      <section className="px-0 py-[5px]">
         <div className="container mx-auto max-w-4xl px-0">
           <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
             <h3 className="text-lg font-semibold text-gray-600 mb-2">Ad Placeholder</h3>
