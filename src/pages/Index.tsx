@@ -199,7 +199,7 @@ const Index = () => {
 
       {/* Ad Placeholder */}
       <section className="py-[5px] mx-[2px] px-0">
-        <div className="container mx-auto max-w-2xl px-0">
+        <div className="container mx-2px max-w-1xl px-0">
           <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
             <h3 className="text-lg font-semibold text-gray-600 mb-2">Ad Placeholder</h3>
             <p className="text-gray-500">Your AdSense ad could be displayed here.</p>
