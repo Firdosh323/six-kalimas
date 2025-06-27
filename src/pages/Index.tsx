@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Trophy, Bell } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -12,14 +11,12 @@ import KalimaDetail from '@/components/KalimaDetail';
 import Features from '@/components/Features';
 import Statistics from '@/components/Statistics';
 import AppFooter from '@/components/AppFooter';
-
 const Index = () => {
   const [activeKalima, setActiveKalima] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredKalimas, setFilteredKalimas] = useState(kalimas);
   const [visitCount, setVisitCount] = useState(0);
   const [kalimaOfTheDay, setKalimaOfTheDay] = useState(kalimas[0]);
-  
   useEffect(() => {
     // Set Kalima of the Day based on current date
     const today = new Date();
@@ -49,32 +46,23 @@ const Index = () => {
     const visits = parseInt(localStorage.getItem('site-visits') || '0') + 1;
     localStorage.setItem('site-visits', visits.toString());
     setVisitCount(visits);
-    
     return () => {
       document.head.removeChild(script);
     };
   }, []);
-
   const handleSearch = (query: string) => {
     setSearchQuery(query);
     if (query.trim() === '') {
       setFilteredKalimas(kalimas);
     } else {
-      const filtered = kalimas.filter(kalima => 
-        kalima.name.toLowerCase().includes(query.toLowerCase()) || 
-        kalima.title.toLowerCase().includes(query.toLowerCase()) || 
-        kalima.translation.toLowerCase().includes(query.toLowerCase()) || 
-        kalima.transliteration.toLowerCase().includes(query.toLowerCase())
-      );
+      const filtered = kalimas.filter(kalima => kalima.name.toLowerCase().includes(query.toLowerCase()) || kalima.title.toLowerCase().includes(query.toLowerCase()) || kalima.translation.toLowerCase().includes(query.toLowerCase()) || kalima.transliteration.toLowerCase().includes(query.toLowerCase()));
       setFilteredKalimas(filtered);
     }
   };
-
   const clearSearch = () => {
     setSearchQuery('');
     setFilteredKalimas(kalimas);
   };
-
   const scrollToKalima = (id: number) => {
     setActiveKalima(id);
     setTimeout(() => {
@@ -85,22 +73,19 @@ const Index = () => {
       });
     }, 100);
   };
-
   const handleCardClick = (id: number) => {
     scrollToKalima(id);
   };
-
   const downloadPDF = () => {
     console.log('Downloading PDF guide...');
     // In a real implementation, this would trigger a PDF download
   };
-
   const selectedKalima = activeKalima ? kalimas.find(k => k.id === activeKalima) : null;
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-emerald-50">
+  return <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-emerald-50">
       {/* SEO Meta Tags */}
-      <div style={{ display: 'none' }}>
+      <div style={{
+      display: 'none'
+    }}>
         <h1>6 Kalimas of Islam - Sacred Declarations of Faith</h1>
         <p>Learn the Six Kalimas: Tayyibah, Shahadat, Tamjeed, Tawheed, Istighfar, and Radde Kufr. Complete with Arabic text, transliteration, translation, and meanings.</p>
       </div>
@@ -111,8 +96,8 @@ const Index = () => {
       {/* Ad Placeholder */}
       <section className="py-[5px] mx-[2px] px-0">
         <div className="container mx-2px max-w-1xl px-0">
-          <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
-            <h3 className="text-lg font-semibold text-gray-600 mb-2">Ad Placeholder</h3>
+          <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg p-8 text-center px-[30px] py-0">
+            <h3 className="text-lg font-semibold text-gray-600 mb-2 text-center">Ad Placeholder</h3>
             <p className="text-gray-500">Your AdSense ad could be displayed here.</p>
           </div>
         </div>
@@ -140,33 +125,20 @@ const Index = () => {
       <section className="py-[10px] px-[10px]">
         <div className="container mx-auto max-w-4xl">
           <SearchBar onSearch={handleSearch} onClear={clearSearch} />
-          {searchQuery && (
-            <p className="text-center mt-4 text-emerald-700">
+          {searchQuery && <p className="text-center mt-4 text-emerald-700">
               Found {filteredKalimas.length} result{filteredKalimas.length !== 1 ? 's' : ''} for "{searchQuery}"
-            </p>
-          )}
+            </p>}
         </div>
       </section>
 
-      <KalimasGrid 
-        kalimas={filteredKalimas} 
-        activeKalima={activeKalima} 
-        onCardClick={handleCardClick} 
-      />
+      <KalimasGrid kalimas={filteredKalimas} activeKalima={activeKalima} onCardClick={handleCardClick} />
 
       {/* Detailed Kalimas Section */}
-      {activeKalima && selectedKalima && (
-        <KalimaDetail 
-          kalima={selectedKalima} 
-          onClose={() => setActiveKalima(null)} 
-        />
-      )}
+      {activeKalima && selectedKalima && <KalimaDetail kalima={selectedKalima} onClose={() => setActiveKalima(null)} />}
 
       <Features />
       <Statistics visitCount={visitCount} />
       <AppFooter />
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
