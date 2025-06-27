@@ -166,7 +166,7 @@ const Index = () => {
 
       {/* Hero Section */}
       <section className="relative py-20 px-4 text-center">
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-600/10 to-amber-600/10"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-emerald-600/10 to-amber-600/10 px-0"></div>
         <div className="relative container mx-auto max-w-4xl">
           <div className="mb-4">
             <h1 className="text-5xl font-bold text-emerald-900 mb-6 leading-tight md:text-5xl">
@@ -178,7 +178,7 @@ const Index = () => {
             <div className="w-24 h-1 bg-gradient-to-r from-emerald-600 to-amber-600 mx-auto rounded-full"></div>
           </div>
           
-          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-emerald-100 px-[5px] py-[5px]">
+          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-emerald-100 py-[5px] px-[20px]">
             <p className="text-lg text-emerald-800 leading-relaxed">
               The Six Kalimas are fundamental Islamic declarations that express the core beliefs of Islam. Each Kalima serves a unique purpose in strengthening faith, seeking forgiveness, and affirming the oneness of Allah.
             </p>
