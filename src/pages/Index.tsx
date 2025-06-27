@@ -33,7 +33,7 @@ const kalimas = [{
   name: "Kalima Tamjeed",
   title: "The Glorification",
   shortTitle: "Third Kalima - Tamjeed",
-  arabic: "سُبْحَانَ اللّٰهِ وَالْحَمْدُ لِلّٰهِ وَلَا إِلٰهَ إِلَّا اللّٰهُ وَاللّٰهُ أَكْبَرُ وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللّٰهِ الْعَلِيِّ الْعَظِيمِ",
+  arabic: "سُبْحَانَ اللّٰهِ وَالْحَمْدُ لِلّٰهِ وَلَا إِلٰهَ إِلَّا اللّٰهُ وَاللّٰهُ أَكْبَرُ وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللّٰهِ الْعَالِيِّ الْعَظِيمِ",
   transliteration: "Subhan Allah wa al-hamdu lillahi wa la ilaha illa Allah wa Allahu akbar wa la hawla wa la quwwata illa billahi al-ali al-azeem",
   translation: "Glory be to Allah, and praise be to Allah, and there is no god but Allah, and Allah is the Greatest, and there is no power and no strength except with Allah, the Most High, the Most Great",
   meaning: "This Kalima combines various forms of praise and glorification of Allah, acknowledging His supreme power and greatness.",
@@ -199,7 +199,7 @@ const Index = () => {
 
       {/* Ad Placeholder */}
       <section className="py-[5px] px-2 mx-[2px]">
-        <div className="container mx-auto max-w-4xl px-2">
+        <div className="container mx-auto max-w-2xl px-0">
           <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
             <h3 className="text-lg font-semibold text-gray-600 mb-2">Ad Placeholder</h3>
             <p className="text-gray-500">Your AdSense ad could be displayed here.</p>
@@ -209,7 +209,7 @@ const Index = () => {
 
       {/* Kalima of the Day */}
       <section className="py-4 px-4">
-        <div className="container mx-auto max-w-4xl px-0">
+        <div className="container mx-auto max-w-2xl px-0">
           <div className="p-6 rounded-2xl border bg-gradient-to-tr from-blue-500 to-indigo-600 from-opacity-20 to-opacity-5 border-white text-white relative overflow-hidden">
             <div className="flex items-start space-x-3 mb-0.5 px-0">
               <div className="bg-white/20 rounded-full p-2">
