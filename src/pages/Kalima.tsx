@@ -5,7 +5,6 @@ import Header from '@/components/Header';
 import KalimaDetail from '@/components/KalimaDetail';
 import AppFooter from '@/components/AppFooter';
 import { useEffect, useState } from 'react';
-import { generateKalimasPDF } from '@/utils/pdfGenerator';
 
 const Kalima = () => {
   const { id } = useParams();
@@ -72,7 +71,7 @@ const Kalima = () => {
   }
 
   const downloadPDF = () => {
-    generateKalimasPDF();
+    console.log('Downloading PDF guide...');
   };
 
   return (

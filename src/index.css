@@ -97,7 +97,6 @@
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   .font-arabic {
@@ -111,9 +110,5 @@
   .islamic-pattern {
     background-image: radial-gradient(circle at 1px 1px, rgba(34, 197, 94, 0.15) 1px, transparent 0);
     background-size: 20px 20px;
-  }
-
-  .dark .islamic-pattern {
-    background-image: radial-gradient(circle at 1px 1px, rgba(34, 197, 94, 0.25) 1px, transparent 0);
   }
 }
