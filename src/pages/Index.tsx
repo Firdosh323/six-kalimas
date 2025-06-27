@@ -191,7 +191,7 @@ const Index = () => {
       </section>
 
       {/* Search Section */}
-      <section className="py-8 px-4">
+      <section className="py-[10px] px-[10px]">
         <div className="container mx-auto max-w-4xl">
           <SearchBar onSearch={handleSearch} onClear={clearSearch} />
           {searchQuery && <p className="text-center mt-4 text-emerald-700">
