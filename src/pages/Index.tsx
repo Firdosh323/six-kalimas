@@ -106,30 +106,10 @@ const Index = () => {
       <KalimaOfTheDay kalima={kalimaOfTheDay} onReadMore={scrollToKalima} />
 
       {/* Action Buttons */}
-      <section className="py-6 px-4">
-        <div className="container mx-auto max-w-4xl">
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 text-lg">
-              <Trophy className="w-5 h-5 mr-2" />
-              Test Your Knowledge
-            </Button>
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg">
-              <Bell className="w-5 h-5 mr-2" />
-              Set Daily Reminder
-            </Button>
-          </div>
-        </div>
-      </section>
+      
 
       {/* Search Section */}
-      <section className="py-[10px] px-[10px]">
-        <div className="container mx-auto max-w-4xl">
-          <SearchBar onSearch={handleSearch} onClear={clearSearch} />
-          {searchQuery && <p className="text-center mt-4 text-emerald-700">
-              Found {filteredKalimas.length} result{filteredKalimas.length !== 1 ? 's' : ''} for "{searchQuery}"
-            </p>}
-        </div>
-      </section>
+      
 
       <KalimasGrid kalimas={filteredKalimas} activeKalima={activeKalima} onCardClick={handleCardClick} />
 
