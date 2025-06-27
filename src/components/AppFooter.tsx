@@ -1,5 +1,6 @@
 
 import { Star } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const AppFooter = () => {
   return (
@@ -19,7 +20,7 @@ const AppFooter = () => {
         </div>
         
         <div className="border-t border-emerald-800 pt-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
             <div>
               <h4 className="font-semibold mb-3">Features</h4>
               <ul className="space-y-2 text-emerald-200 text-sm">
@@ -39,12 +40,21 @@ const AppFooter = () => {
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-3">Share</h4>
+              <h4 className="font-semibold mb-3">Resources</h4>
               <ul className="space-y-2 text-emerald-200 text-sm">
-                <li>Social Sharing</li>
+                <li><Link to="/about" className="hover:text-white transition-colors">About Us</Link></li>
+                <li><Link to="/contact" className="hover:text-white transition-colors">Contact Us</Link></li>
                 <li>PDF Downloads</li>
                 <li>Mobile Friendly</li>
-                <li>Offline Ready</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-3">Legal</h4>
+              <ul className="space-y-2 text-emerald-200 text-sm">
+                <li><Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
+                <li><Link to="/disclaimer" className="hover:text-white transition-colors">Disclaimer</Link></li>
+                <li>Terms of Service</li>
+                <li>Cookie Policy</li>
               </ul>
             </div>
           </div>
@@ -52,7 +62,7 @@ const AppFooter = () => {
           <div className="text-center">
             <div className="w-16 h-1 bg-gradient-to-r from-emerald-400 to-amber-400 mx-auto rounded-full mb-4"></div>
             <p className="text-emerald-300 text-sm">
-              © 2024 6 Kalimas. Made with ❤️ for the Muslim Ummah.
+              © 2024 6kalimas.com. Made with ❤️ for the Muslim Ummah.
             </p>
           </div>
         </div>
