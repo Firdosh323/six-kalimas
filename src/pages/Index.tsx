@@ -168,7 +168,7 @@ const Index = () => {
       <section className="relative py-20 px-4 text-center">
         <div className="absolute inset-0 bg-gradient-to-r from-emerald-600/10 to-amber-600/10"></div>
         <div className="relative container mx-auto max-w-4xl">
-          <div className="mb-8">
+          <div className="mb-4">
             <h1 className="text-5xl font-bold text-emerald-900 mb-6 leading-tight md:text-5xl">
               The Six Kalimas
             </h1>
