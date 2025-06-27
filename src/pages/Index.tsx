@@ -201,7 +201,7 @@ const Index = () => {
       </section>
 
       {/* Kalimas Cards Overview */}
-      <section className="py-16 px-4">
+      <section className="px-4 py-0">
         <div className="container mx-auto max-w-7xl">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-emerald-900 mb-4">
