@@ -8,7 +8,6 @@ import FavoriteButton from '@/components/FavoriteButton';
 import ProgressTracker from '@/components/ProgressTracker';
 import DailyReminder from '@/components/DailyReminder';
 import ShareButton from '@/components/ShareButton';
-
 const kalimas = [{
   id: 1,
   name: "Kalima Tayyibah",
@@ -70,14 +69,12 @@ const kalimas = [{
   meaning: "This final Kalima serves as a comprehensive rejection of all forms of disbelief and sin, while reaffirming one's commitment to Islamic faith.",
   cardColor: "from-cyan-500 to-blue-600"
 }];
-
 const Index = () => {
   const [activeKalima, setActiveKalima] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredKalimas, setFilteredKalimas] = useState(kalimas);
   const [visitCount, setVisitCount] = useState(0);
   const [kalimaOfTheDay, setKalimaOfTheDay] = useState(kalimas[0]);
-
   useEffect(() => {
     // Set Kalima of the Day based on current date
     const today = new Date();
@@ -111,7 +108,6 @@ const Index = () => {
       document.head.removeChild(script);
     };
   }, []);
-
   const handleSearch = (query: string) => {
     setSearchQuery(query);
     if (query.trim() === '') {
@@ -203,7 +199,7 @@ const Index = () => {
 
       {/* Ad Placeholder */}
       <section className="py-4 px-4">
-        <div className="container mx-auto max-w-4xl">
+        <div className="container mx-auto max-w-4xl px-0">
           <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
             <h3 className="text-lg font-semibold text-gray-600 mb-2">Ad Placeholder</h3>
             <p className="text-gray-500">Your AdSense ad could be displayed here.</p>
@@ -225,10 +221,7 @@ const Index = () => {
                 <p className="text-white/90 mb-6 leading-relaxed">
                   {kalimaOfTheDay.meaning}
                 </p>
-                <Button 
-                  onClick={() => scrollToKalima(kalimaOfTheDay.id)}
-                  className="bg-white text-gray-900 hover:bg-white/90"
-                >
+                <Button onClick={() => scrollToKalima(kalimaOfTheDay.id)} className="bg-white text-gray-900 hover:bg-white/90">
                   Read More
                 </Button>
               </div>
