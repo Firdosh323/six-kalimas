@@ -208,7 +208,7 @@ const Index = () => {
       </section>
 
       {/* Kalima of the Day */}
-      <section className="py-6 px-4">
+      <section className="py-4 px-4">
         <div className="container mx-auto max-w-4xl px-0">
           <div className={`bg-gradient-to-r ${kalimaOfTheDay.cardColor} rounded-2xl p-8 text-white relative overflow-hidden`}>
             <div className="flex items-start space-x-3 mb-0.5 px-0">
