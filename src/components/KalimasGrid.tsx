@@ -23,7 +23,7 @@ const KalimasGrid = ({
           <h2 className="text-3xl font-bold text-emerald-900 mb-2 md:text-2xl">
             The Six Sacred Kalimas
           </h2>
-          <p className="text-lg text-emerald-700">
+          <p className="text-emerald-700 text-base">
             Click on any Kalima to learn more about its meaning and significance
           </p>
         </div>
