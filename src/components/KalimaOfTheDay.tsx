@@ -1,7 +1,5 @@
-
 import { Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-
 interface KalimaOfTheDayProps {
   kalima: {
     id: number;
@@ -10,10 +8,11 @@ interface KalimaOfTheDayProps {
   };
   onReadMore: (id: number) => void;
 }
-
-const KalimaOfTheDay = ({ kalima, onReadMore }: KalimaOfTheDayProps) => {
-  return (
-    <section className="py-4 px-4">
+const KalimaOfTheDay = ({
+  kalima,
+  onReadMore
+}: KalimaOfTheDayProps) => {
+  return <section className="py-4 px-4">
       <div className="container mx-2px max-w-1xl px-0">
         <div className="p-6 rounded-2xl border bg-gradient-to-tr from-blue-500 to-indigo-600 from-opacity-20 to-opacity-5 border-white text-white relative overflow-hidden">
           <div className="flex items-start space-x-3 mb-0.5 px-0">
@@ -21,7 +20,7 @@ const KalimaOfTheDay = ({ kalima, onReadMore }: KalimaOfTheDayProps) => {
               <Star className="w-6 h-6" />
             </div>
             <div>
-              <h2 className="text-2xl font-bold mb-2">Kalima of the Day</h2>
+              <h2 className="mb-2 font-semibold text-lg">Kalima of the Day</h2>
               <h3 className="text-xl font-semibold mb-3">{kalima.shortTitle}</h3>
               <p className="text-white/90 mb-6 leading-relaxed">
                 {kalima.meaning}
@@ -33,8 +32,6 @@ const KalimaOfTheDay = ({ kalima, onReadMore }: KalimaOfTheDayProps) => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default KalimaOfTheDay;
