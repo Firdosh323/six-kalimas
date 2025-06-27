@@ -21,7 +21,7 @@ const KalimaOfTheDay = ({
             </div>
             <div>
               <h2 className="mb-2 font-semibold text-lg">Kalima of the Day</h2>
-              <h3 className="text-xl font-semibold mb-3">{kalima.shortTitle}</h3>
+              <h3 className="text-xl mb-2 font-bold">{kalima.shortTitle}</h3>
               <p className="text-white/90 mb-6 leading-relaxed">
                 {kalima.meaning}
               </p>
