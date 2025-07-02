@@ -17,6 +17,20 @@ const PDFDownloadSection = ({ onDownloadPDF }: PDFDownloadSectionProps) => {
     "Printable format for offline learning"
   ];
 
+  const handlePDFDownload = () => {
+    // Create a link to download the PDF from the uploads folder
+    const link = document.createElement('a');
+    link.href = '/uploads/pdfs/6-kalimas-pdf.pdf';
+    link.download = '6-kalimas-complete-guide.pdf';
+    link.target = '_blank';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    // Call the original onDownloadPDF for analytics tracking
+    onDownloadPDF();
+  };
+
   return (
     <section className="py-16 px-4 bg-gradient-to-r from-emerald-900 to-blue-900 text-white">
       <div className="container mx-auto max-w-6xl">
@@ -82,7 +96,7 @@ const PDFDownloadSection = ({ onDownloadPDF }: PDFDownloadSectionProps) => {
               </div>
 
               <Button 
-                onClick={onDownloadPDF}
+                onClick={handlePDFDownload}
                 className="mt-8 bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
                 size="lg"
               >
