@@ -40,7 +40,7 @@ const Header = ({ visitCount, onDownloadPDF }: HeaderProps) => {
             <span className="text-sm text-emerald-600">Visits: {visitCount.toLocaleString()}</span>
             <Button onClick={handlePDFDownload} variant="outline" size="sm">
               <Download className="w-4 h-4 mr-2" />
-              PDF Guide
+              6 Kalma PDF
             </Button>
           </nav>
         </div>
