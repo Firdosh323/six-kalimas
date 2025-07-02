@@ -4,7 +4,10 @@ import { kalimas } from '@/data/kalimas';
 import Header from '@/components/Header';
 import KalimaDetail from '@/components/KalimaDetail';
 import AppFooter from '@/components/AppFooter';
+import RelatedKalimas from '@/components/RelatedKalimas';
+import ContextualLinks from '@/components/ContextualLinks';
 import { useEffect, useState } from 'react';
+import { updateCanonicalUrl, generateEducationalSchema } from '@/utils/seoUtils';
 
 const Kalima = () => {
   const { id } = useParams();
@@ -19,12 +22,15 @@ const Kalima = () => {
     setVisitCount(visits);
 
     if (kalima) {
+      // Update canonical URL for this specific kalima page
+      updateCanonicalUrl(`/kalima/${kalimaId}`);
+
       // SEO: Add structured data for individual Kalima
-      const structuredData = {
+      const articleSchema = {
         "@context": "https://schema.org",
         "@type": "Article",
         "headline": `${kalima.name} - ${kalima.title}`,
-        "description": kalima.meaning,
+        "description": `Learn ${kalima.name} with Arabic text, English translation and transliteration. Complete Islamic guide with detailed meaning.`,
         "author": {
           "@type": "Organization",
           "name": "6 Kalimas Guide"
@@ -34,34 +40,49 @@ const Kalima = () => {
           "name": "6 Kalimas Guide",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://6kalimas.com/favicon.ico"
+            "url": "https://6kalimas.com/uploads/favicons/6kalimas_favicon.ico",
+            "alt": "6 Kalimas Islamic learning platform logo"
           }
         },
         "datePublished": "2024-01-01",
-        "dateModified": "2024-01-01",
+        "dateModified": new Date().toISOString().split('T')[0],
         "mainEntityOfPage": {
           "@type": "WebPage",
           "@id": `https://6kalimas.com/kalima/${kalimaId}`
         },
         "articleBody": `${kalima.meaning} ${kalima.tafsir}`,
-        "keywords": "6 kalimas, islamic kalma, muslim prayers, kalma in arabic, kalma with translation"
+        "keywords": `${kalima.name}, islamic kalima, muslim prayers, 6 kalimas`,
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://images.unsplash.com/photo-1466442929976-97f336a657be",
+          "alt": "Beautiful Islamic mosque architecture representing 6 Kalimas in Islam"
+        }
       };
+      
+      // Add educational schema for this kalima
+      const educationalSchema = generateEducationalSchema(kalima);
 
-      const script = document.createElement('script');
-      script.type = 'application/ld+json';
-      script.innerHTML = JSON.stringify(structuredData);
-      document.head.appendChild(script);
+      const script1 = document.createElement('script');
+      script1.type = 'application/ld+json';
+      script1.innerHTML = JSON.stringify(articleSchema);
+      document.head.appendChild(script1);
+
+      const script2 = document.createElement('script');
+      script2.type = 'application/ld+json';
+      script2.innerHTML = JSON.stringify(educationalSchema);
+      document.head.appendChild(script2);
 
       // Update page title and meta description
       document.title = `${kalima.name} - ${kalima.title} | 6 Kalimas of Islam`;
       
       let metaDesc = document.querySelector('meta[name="description"]');
       if (metaDesc) {
-        metaDesc.setAttribute('content', `Learn ${kalima.name} (${kalima.title}) with Arabic text, English translation, transliteration and detailed meaning. ${kalima.meaning}`);
+        metaDesc.setAttribute('content', `Learn ${kalima.name} (${kalima.title}) with Arabic text, transliteration, English translation and detailed meaning. Complete Islamic learning guide.`);
       }
 
       return () => {
-        document.head.removeChild(script);
+        document.head.removeChild(script1);
+        document.head.removeChild(script2);
       };
     }
   }, [kalima, kalimaId]);
@@ -79,7 +100,9 @@ const Kalima = () => {
       {/* SEO Meta Tags */}
       <div style={{ display: 'none' }}>
         <h1>{kalima.name} - {kalima.title} - 6 Kalimas of Islam</h1>
-        <p>Learn {kalima.name} with Arabic text, transliteration, English translation and detailed meaning. Complete guide to Islamic Kalimas.</p>
+        <p>Learn {kalima.name} with Arabic text, transliteration, English translation and detailed meaning. Complete Islamic learning guide.</p>
+        <img src="https://images.unsplash.com/photo-1466442929976-97f336a657be" alt="Islamic mosque with traditional architecture showcasing the spiritual beauty of 6 Kalimas" style={{ display: 'none' }} />
+        <img src="https://images.unsplash.com/photo-1492321936769-b49830bc1d1e" alt="Peaceful Islamic building under starlit sky representing Islamic prayers" style={{ display: 'none' }} />
       </div>
 
       <Header visitCount={visitCount} onDownloadPDF={downloadPDF} />
@@ -105,6 +128,20 @@ const Kalima = () => {
           onClose={() => window.history.back()} 
         />
 
+        {/* Contextual Navigation Links */}
+        <section className="py-8 px-4">
+          <div className="container mx-auto max-w-4xl">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <ContextualLinks type="quick-navigation" currentKalimaId={kalimaId} />
+              <ContextualLinks type="learning-resources" currentKalimaId={kalimaId} />
+              <ContextualLinks type="audio-features" currentKalimaId={kalimaId} />
+            </div>
+          </div>
+        </section>
+
+        {/* Related Kalimas Section */}
+        <RelatedKalimas currentKalimaId={kalimaId} />
+
         {/* Additional SEO Content */}
         <section className="py-16 px-4 bg-white">
           <div className="container mx-auto max-w-4xl">
@@ -120,17 +157,17 @@ const Kalima = () => {
               </p>
               
               <h4 className="text-xl font-semibold text-emerald-800 mb-3">
-                How to Recite {kalima.name}
+                How to Memorize {kalima.name}
               </h4>
               <p className="text-gray-700 mb-4">
-                This sacred Kalima should be recited with sincerity and understanding. Listen to the audio pronunciation above and practice the Arabic text along with understanding its meaning.
+                This sacred Kalima should be recited with sincerity and understanding. Practice the Arabic text while understanding its meaning to strengthen your Islamic faith and connection with Allah.
               </p>
 
               <h5 className="text-lg font-semibold text-emerald-800 mb-3">
-                Related Kalimas
+                Learning Benefits
               </h5>
               <p className="text-gray-700">
-                {kalima.name} is part of the six fundamental Kalimas in Islam. Each Kalima serves a specific purpose in strengthening a Muslim's faith and connection with Allah.
+                {kalima.name} is part of the six fundamental Kalimas in Islam. Regular recitation helps strengthen your Islamic faith and understanding of core Islamic principles.
               </p>
             </div>
           </div>
