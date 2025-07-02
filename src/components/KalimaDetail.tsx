@@ -1,6 +1,6 @@
 
 import { Card, CardContent } from '@/components/ui/card';
-import { Copy } from 'lucide-react';
+import { Copy, Volume2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import AudioPlayer from '@/components/AudioPlayer';
@@ -71,11 +71,35 @@ const KalimaDetail = ({ kalima, onClose }: KalimaDetailProps) => {
                   </button>
                 </div>
               </div>
+              
+              {/* Audio emphasis banner */}
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+                <div className="flex items-center space-x-3">
+                  <Volume2 className="w-6 h-6 text-emerald-200" />
+                  <div>
+                    <h3 className="font-bold text-emerald-100">🎵 Kalima with Audio Feature</h3>
+                    <p className="text-white/80 text-sm">
+                      Perfect pronunciation with our high-quality Arabic audio recitation
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div className="p-8 space-y-8">
-              {/* Audio Player */}
-              <AudioPlayer kalimaId={kalima.id} title={kalima.name} />
+              {/* Enhanced Audio Player Section */}
+              <div className="bg-gradient-to-r from-emerald-25 to-blue-25 rounded-2xl p-6 border-2 border-emerald-200">
+                <div className="text-center mb-4">
+                  <h3 className="text-xl font-bold text-emerald-900 mb-2 flex items-center justify-center">
+                    <Volume2 className="w-6 h-6 mr-2" />
+                    Listen to Perfect Arabic Pronunciation
+                  </h3>
+                  <p className="text-emerald-700">
+                    🎧 Use headphones for the best audio experience • 🔄 Repeat until mastered
+                  </p>
+                </div>
+                <AudioPlayer kalimaId={kalima.id} title={kalima.name} />
+              </div>
 
               {/* Arabic Text */}
               <div className="text-center">
@@ -104,9 +128,14 @@ const KalimaDetail = ({ kalima, onClose }: KalimaDetailProps) => {
                 >
                   <Copy size={16} />
                 </Button>
-                <h4 className="font-semibold text-emerald-800 mb-3">Transliteration:</h4>
+                <h4 className="font-semibold text-emerald-800 mb-3">
+                  Transliteration (How to Pronounce):
+                </h4>
                 <p className="text-lg text-gray-700 italic leading-relaxed">
                   {kalima.transliteration}
+                </p>
+                <p className="text-sm text-emerald-600 mt-2">
+                  💡 Follow along with the audio above for perfect pronunciation
                 </p>
               </div>
 
@@ -120,7 +149,7 @@ const KalimaDetail = ({ kalima, onClose }: KalimaDetailProps) => {
                 >
                   <Copy size={16} />
                 </Button>
-                <h4 className="font-semibold text-emerald-800 mb-3">Translation:</h4>
+                <h4 className="font-semibold text-emerald-800 mb-3">English Translation:</h4>
                 <p className="text-lg text-emerald-900 leading-relaxed">
                   "{kalima.translation}"
                 </p>
@@ -136,7 +165,7 @@ const KalimaDetail = ({ kalima, onClose }: KalimaDetailProps) => {
                 >
                   <Copy size={16} />
                 </Button>
-                <h4 className="font-semibold text-blue-800 mb-3">Meaning:</h4>
+                <h4 className="font-semibold text-blue-800 mb-3">Detailed Meaning:</h4>
                 <p className="text-gray-700 leading-relaxed">
                   {kalima.meaning}
                 </p>
@@ -160,6 +189,20 @@ const KalimaDetail = ({ kalima, onClose }: KalimaDetailProps) => {
 
               {/* Progress Tracker */}
               <ProgressTracker kalimaId={kalima.id} title={kalima.name} />
+
+              {/* Audio Learning Tips */}
+              <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-6 border border-purple-200">
+                <h4 className="font-semibold text-purple-800 mb-3 flex items-center">
+                  <Volume2 className="w-5 h-5 mr-2" />
+                  Audio Learning Tips for This Kalima:
+                </h4>
+                <ul className="text-gray-700 space-y-2 text-sm">
+                  <li>• Listen to the audio 3-5 times while reading the Arabic text</li>
+                  <li>• Practice pronunciation by repeating after each audio playback</li>
+                  <li>• Use the audio feature daily to improve your recitation</li>
+                  <li>• Focus on proper Arabic pronunciation with the audio guidance</li>
+                </ul>
+              </div>
             </div>
           </CardContent>
         </Card>
