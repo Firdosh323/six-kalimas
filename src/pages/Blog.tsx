@@ -99,9 +99,11 @@ const Blog = () => {
                       </span>
                     ))}
                   </div>
-                  <Button className="w-fit bg-emerald-600 hover:bg-emerald-700">
-                    Read Full Article <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
+                  <Link to={`/blog/${filteredPosts[0].slug}`}>
+                    <Button className="w-fit bg-emerald-600 hover:bg-emerald-700">
+                      Read Full Article <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                  </Link>
                 </CardContent>
               </div>
             </Card>
@@ -145,9 +147,11 @@ const Blog = () => {
                     </span>
                   ))}
                 </div>
-                <Button variant="outline" className="w-full border-emerald-200 text-emerald-700 hover:bg-emerald-50">
-                  Read More <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
+                <Link to={`/blog/${post.slug}`}>
+                  <Button variant="outline" className="w-full border-emerald-200 text-emerald-700 hover:bg-emerald-50">
+                    Read More <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
           ))}
