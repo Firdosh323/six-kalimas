@@ -1,5 +1,5 @@
 
-import { Star, Download } from 'lucide-react';
+import { Star, Download, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
@@ -38,6 +38,12 @@ const Header = ({ visitCount, onDownloadPDF }: HeaderProps) => {
           </Link>
           <nav className="hidden md:flex items-center space-x-6">
             <span className="text-sm text-emerald-600">Visits: {visitCount.toLocaleString()}</span>
+            <Link to="/blog">
+              <Button variant="ghost" size="sm" className="text-emerald-700 hover:text-emerald-900">
+                <BookOpen className="w-4 h-4 mr-2" />
+                Blog
+              </Button>
+            </Link>
             <Button onClick={handlePDFDownload} variant="outline" size="sm">
               <Download className="w-4 h-4 mr-2" />
               6 Kalma PDF
