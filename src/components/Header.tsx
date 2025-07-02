@@ -9,6 +9,20 @@ interface HeaderProps {
 }
 
 const Header = ({ visitCount, onDownloadPDF }: HeaderProps) => {
+  const handlePDFDownload = () => {
+    // Create a link to download the PDF from the uploads folder
+    const link = document.createElement('a');
+    link.href = '/uploads/pdfs/6-kalimas-pdf.pdf';
+    link.download = '6-kalimas-complete-guide.pdf';
+    link.target = '_blank';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    // Call the original onDownloadPDF for analytics tracking
+    onDownloadPDF();
+  };
+
   return (
     <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-emerald-100">
       <div className="container mx-auto px-4 py-4">
@@ -24,7 +38,7 @@ const Header = ({ visitCount, onDownloadPDF }: HeaderProps) => {
           </Link>
           <nav className="hidden md:flex items-center space-x-6">
             <span className="text-sm text-emerald-600">Visits: {visitCount.toLocaleString()}</span>
-            <Button onClick={onDownloadPDF} variant="outline" size="sm">
+            <Button onClick={handlePDFDownload} variant="outline" size="sm">
               <Download className="w-4 h-4 mr-2" />
               PDF Guide
             </Button>
