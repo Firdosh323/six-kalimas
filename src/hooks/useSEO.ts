@@ -11,14 +11,14 @@ export const useSEO = () => {
     // Update canonical URL based on current path
     updateCanonicalUrl(location.pathname);
 
-    // SEO: Add structured data with enhanced keywords
+    // SEO: Add structured data
     const structuredData = {
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "6 Kalimas of Islam - Complete Guide",
-      "description": "Learn all 6 Kalimas of Islam including 1st kalma, 2nd kalma, 3rd kalma, 4th kalma, 5th kalma, 6th kalma with Arabic text, English translations, transliterations and audio recitations.",
+      "description": "Learn all 6 Kalimas of Islam including 1st kalma, 2nd kalma, 3rd kalma, 4th kalma, 5th kalma, 6th kalma with Arabic text, English translations and transliterations.",
       "url": "https://6kalimas.com",
-      "keywords": "6 kalimas, 1 to 6 kalma, islamic six kalma, kalma in islam, muslim kalma, 6 kalma in arabic, kalma with translation, islamic declarations, shahada, tawheed, istighfar, kalima with audio, easy way to memorize kalimas",
+      "keywords": "6 kalimas, islamic kalima, muslim declarations, shahada, tawheed, istighfar",
       "potentialAction": {
         "@type": "SearchAction",
         "target": "https://6kalimas.com/search?q={search_term_string}",
@@ -33,14 +33,7 @@ export const useSEO = () => {
             "@type": "Article",
             "name": kalima.name,
             "description": kalima.meaning,
-            "url": `https://6kalimas.com/kalima/${kalima.id}`,
-            "associatedMedia": {
-              "@type": "AudioObject",
-              "name": `${kalima.name} Audio Recitation`,
-              "description": `Perfect Arabic pronunciation of ${kalima.name} for Islamic learning`,
-              "contentUrl": `https://6kalimas.com/audio/${getAudioFileName(kalima.id)}`,
-              "encodingFormat": "audio/mpeg"
-            }
+            "url": `https://6kalimas.com/kalima/${kalima.id}`
           }
         }))
       }
@@ -51,15 +44,14 @@ export const useSEO = () => {
       "@context": "https://schema.org",
       "@type": "EducationalWebsite",
       "name": "6 Kalimas Islamic Learning Platform",
-      "description": "Comprehensive Islamic education platform for learning all 6 Kalimas with audio recitations, translations, and memorization techniques",
+      "description": "Comprehensive Islamic education platform for learning all 6 Kalimas with translations and memorization techniques",
       "educationalLevel": "All Levels",
       "learningResourceType": "Islamic Education",
-      "teaches": "Islamic Kalimas, Arabic pronunciation, Islamic faith fundamentals",
+      "teaches": "Islamic Kalimas, Islamic faith fundamentals",
       "audience": {
         "@type": "EducationalAudience", 
         "educationalRole": "Muslim Learners"
       },
-      "hasCredential": "Islamic Educational Content",
       "provider": {
         "@type": "Organization",
         "name": "6 Kalimas Guide"
@@ -76,10 +68,10 @@ export const useSEO = () => {
     script2.innerHTML = JSON.stringify(educationalSchema);
     document.head.appendChild(script2);
 
-    // Update meta description with high-volume keywords
+    // Update meta description
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute('content', 'Learn all 6 Kalimas of Islam - 1st kalma to 6th kalma with Arabic text, English translation, transliteration and audio. Complete guide to islamic six kalma including Tayyibah, Shahadat, Tamjeed, Tawheed, Istighfar, Radde Kufr with perfect audio pronunciation.');
+      metaDesc.setAttribute('content', 'Learn all 6 Kalimas of Islam - Complete guide with Arabic text, English translation and transliteration. Essential Islamic declarations including Tayyibah, Shahadat, Tamjeed, Tawheed, Istighfar, and Radde Kufr.');
     }
 
     return () => {
@@ -87,16 +79,4 @@ export const useSEO = () => {
       document.head.removeChild(script2);
     };
   }, [location.pathname]);
-};
-
-const getAudioFileName = (kalimaId: number) => {
-  const audioFiles = {
-    1: 'First_Kalma.mp3',
-    2: 'Second_Kalma.mp3', 
-    3: 'Third_Kalma.mp3',
-    4: 'Fourth_Kalma.mp3',
-    5: 'Fifth_Kalma.mp3',
-    6: 'Sixth_Kalma.mp3'
-  };
-  return audioFiles[kalimaId as keyof typeof audioFiles] || 'First_Kalma.mp3';
 };
