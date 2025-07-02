@@ -1,9 +1,10 @@
-
 import { useParams, Navigate } from 'react-router-dom';
 import { kalimas } from '@/data/kalimas';
 import Header from '@/components/Header';
 import KalimaDetail from '@/components/KalimaDetail';
 import AppFooter from '@/components/AppFooter';
+import RelatedKalimas from '@/components/RelatedKalimas';
+import ContextualLinks from '@/components/ContextualLinks';
 import { useEffect, useState } from 'react';
 import { updateCanonicalUrl, generateAudioSchema, generateEducationalSchema } from '@/utils/seoUtils';
 
@@ -83,7 +84,7 @@ const Kalima = () => {
       
       let metaDesc = document.querySelector('meta[name="description"]');
       if (metaDesc) {
-        metaDesc.setAttribute('content', `Learn ${kalima.name} (${kalima.title}) with Arabic text, English translation, transliteration and perfect audio pronunciation. ${kalima.meaning} - Complete Islamic guide with audio recitation.`);
+        metaDesc.setAttribute('content', `Learn ${kalima.name} (${kalima.title}) with Arabic text, transliteration, English translation, perfect audio pronunciation and detailed meaning. Complete Islamic learning guide.`);
       }
 
       return () => {
@@ -134,6 +135,20 @@ const Kalima = () => {
           kalima={kalima} 
           onClose={() => window.history.back()} 
         />
+
+        {/* Contextual Navigation Links */}
+        <section className="py-8 px-4">
+          <div className="container mx-auto max-w-4xl">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <ContextualLinks type="quick-navigation" currentKalimaId={kalimaId} />
+              <ContextualLinks type="learning-resources" currentKalimaId={kalimaId} />
+              <ContextualLinks type="audio-features" currentKalimaId={kalimaId} />
+            </div>
+          </div>
+        </section>
+
+        {/* Related Kalimas Section */}
+        <RelatedKalimas currentKalimaId={kalimaId} />
 
         {/* Additional SEO Content with proper alt texts */}
         <section className="py-16 px-4 bg-white">

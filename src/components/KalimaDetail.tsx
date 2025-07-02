@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from '@/components/ui/card';
 import { Copy, Volume2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -6,6 +5,7 @@ import { useToast } from '@/hooks/use-toast';
 import AudioPlayer from '@/components/AudioPlayer';
 import ShareButton from '@/components/ShareButton';
 import ProgressTracker from '@/components/ProgressTracker';
+import { generateInternalLinks } from '@/utils/relatedContent';
 
 interface KalimaDetailProps {
   kalima: {
@@ -47,6 +47,10 @@ const KalimaDetail = ({ kalima, onClose }: KalimaDetailProps) => {
       });
     }
   };
+
+  // Generate internal links for text content
+  const linkedMeaning = generateInternalLinks(kalima.meaning, kalima.id);
+  const linkedTafsir = generateInternalLinks(kalima.tafsir, kalima.id);
 
   return (
     <section className="py-16 px-4 bg-gradient-to-r from-emerald-50 to-amber-50">
@@ -155,7 +159,7 @@ const KalimaDetail = ({ kalima, onClose }: KalimaDetailProps) => {
                 </p>
               </div>
 
-              {/* Meaning */}
+              {/* Meaning with internal links */}
               <div className="bg-blue-50 rounded-xl p-6 relative">
                 <Button
                   onClick={() => copyToClipboard(kalima.meaning, 'Meaning')}
@@ -166,12 +170,13 @@ const KalimaDetail = ({ kalima, onClose }: KalimaDetailProps) => {
                   <Copy size={16} />
                 </Button>
                 <h4 className="font-semibold text-blue-800 mb-3">Detailed Meaning:</h4>
-                <p className="text-gray-700 leading-relaxed">
-                  {kalima.meaning}
-                </p>
+                <div 
+                  className="text-gray-700 leading-relaxed"
+                  dangerouslySetInnerHTML={{ __html: linkedMeaning }}
+                />
               </div>
 
-              {/* Deeper Meaning (Tafsir) */}
+              {/* Deeper Meaning (Tafsir) with internal links */}
               <div className="bg-amber-50 rounded-xl p-6 relative">
                 <Button
                   onClick={() => copyToClipboard(kalima.tafsir, 'Deeper Meaning (Tafsir)')}
@@ -182,9 +187,10 @@ const KalimaDetail = ({ kalima, onClose }: KalimaDetailProps) => {
                   <Copy size={16} />
                 </Button>
                 <h4 className="font-semibold text-amber-800 mb-3">Deeper Meaning (Tafsir):</h4>
-                <p className="text-gray-700 leading-relaxed">
-                  {kalima.tafsir}
-                </p>
+                <div 
+                  className="text-gray-700 leading-relaxed"
+                  dangerouslySetInnerHTML={{ __html: linkedTafsir }}
+                />
               </div>
 
               {/* Progress Tracker */}
@@ -202,6 +208,27 @@ const KalimaDetail = ({ kalima, onClose }: KalimaDetailProps) => {
                   <li>• Use the audio feature daily to improve your recitation</li>
                   <li>• Focus on proper Arabic pronunciation with the audio guidance</li>
                 </ul>
+              </div>
+
+              {/* Internal Links Section */}
+              <div className="bg-gradient-to-r from-cyan-50 to-blue-50 rounded-xl p-6 border border-cyan-200">
+                <h4 className="font-semibold text-cyan-800 mb-3 flex items-center">
+                  🔗 Continue Your Islamic Learning Journey:
+                </h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                  <a href="/" className="text-emerald-600 hover:text-emerald-800 underline font-medium">
+                    📚 View All 6 Kalimas with Audio
+                  </a>
+                  <a href="/#memorization-tips" className="text-emerald-600 hover:text-emerald-800 underline font-medium">
+                    🧠 Easy way to memorize 6 Kalimas
+                  </a>
+                  <a href="/#importance-section" className="text-emerald-600 hover:text-emerald-800 underline font-medium">
+                    📖 Importance of 6 Kalimas in Islam
+                  </a>
+                  <a href="/#pdf-download" className="text-emerald-600 hover:text-emerald-800 underline font-medium">
+                    📄 Download 6 Kalimas PDF Guide
+                  </a>
+                </div>
               </div>
             </div>
           </CardContent>

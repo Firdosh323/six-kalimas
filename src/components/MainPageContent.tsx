@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { kalimas } from '@/data/kalimas';
@@ -12,6 +11,7 @@ import FAQ from '@/components/FAQ';
 import MemorizationTips from '@/components/MemorizationTips';
 import PDFDownloadSection from '@/components/PDFDownloadSection';
 import ImportanceSection from '@/components/ImportanceSection';
+import TopicClusters from '@/components/TopicClusters';
 
 interface MainPageContentProps {
   dailyContent: {
@@ -62,6 +62,9 @@ const MainPageContent = ({ dailyContent, filteredKalimas, onDownloadPDF }: MainP
         activeKalima={activeKalima} 
         onCardClick={handleCardClick} 
       />
+
+      {/* Topic Clusters Section */}
+      <TopicClusters />
 
       {/* New Long-tail Keyword Content Sections */}
       <MemorizationTips />
