@@ -181,7 +181,7 @@
     }
     </script>
     
-    <!-- Educational Audio Content Schema -->
+    <!-- Fixed Educational Audio Content Schema -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -192,10 +192,17 @@
         "@type": "Organization",
         "name": "6 Kalimas Guide"
       },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "category": "Free"
+      },
       "hasCourseInstance": {
         "@type": "CourseInstance",
         "courseMode": "online",
-        "courseWorkload": "Self-paced",
+        "courseWorkload": "PT1H",
         "teaches": "Islamic Kalimas with Audio Pronunciation"
       },
       "educationalCredentialAwarded": "Islamic Knowledge Certification"
