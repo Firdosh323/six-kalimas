@@ -1,8 +1,8 @@
 
-import { Shield, Eye, Cookie, Database, Lock, UserCheck } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
 import Header from '@/components/Header';
 import AppFooter from '@/components/AppFooter';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Shield, Eye, Cookie, Database, Lock } from 'lucide-react';
 
 const Privacy = () => {
   return (
@@ -11,348 +11,233 @@ const Privacy = () => {
       
       <main className="container mx-auto px-4 py-8 max-w-4xl">
         <div className="text-center mb-12">
-          <Shield className="w-16 h-16 text-emerald-600 mx-auto mb-4" />
           <h1 className="text-4xl font-bold text-emerald-800 mb-4">Privacy Policy</h1>
           <p className="text-xl text-gray-600 leading-relaxed">
-            How we protect and handle your information at 6kalimas.com
+            Your privacy is important to us. Learn how we protect your information.
+          </p>
+          <p className="text-sm text-gray-500 mt-2">
+            Last updated: January 2024
           </p>
         </div>
 
         <div className="space-y-8">
           <Card className="border-emerald-200">
-            <CardContent className="p-6">
-              <div className="flex items-center mb-4">
-                <UserCheck className="w-8 h-8 text-emerald-600 mr-3" />
-                <h2 className="text-2xl font-semibold text-emerald-800">Our Commitment to Privacy</h2>
-              </div>
-              <div className="space-y-4 text-gray-700">
-                <p>
-                  At 6kalimas.com, we are committed to protecting your privacy and ensuring the 
-                  security of any personal information you may provide. This Privacy Policy explains 
-                  how we collect, use, disclose, and safeguard your information when you visit our 
-                  website.
-                </p>
-                <p>
-                  <strong>Effective Date:</strong> This Privacy Policy is effective as of December 2024 
-                  and applies to all users of 6kalimas.com.
-                </p>
-                <p>
-                  <strong>Contact Information:</strong> If you have questions about this Privacy Policy, 
-                  please contact us at privacy@6kalimas.com.
-                </p>
-              </div>
+            <CardHeader>
+              <CardTitle className="flex items-center text-emerald-800">
+                <Shield className="w-6 h-6 mr-3 text-emerald-600" />
+                Our Commitment to Privacy
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4 text-gray-700">
+              <p>
+                At 6kalimas.com, we are committed to protecting your privacy and ensuring 
+                the security of your personal information. This privacy policy explains how 
+                we collect, use, and protect information when you use our website.
+              </p>
+              <p>
+                We believe in transparency and want you to understand exactly what information 
+                we collect and how we use it to improve your learning experience.
+              </p>
             </CardContent>
           </Card>
 
           <Card className="border-emerald-200">
-            <CardContent className="p-6">
-              <div className="flex items-center mb-4">
-                <Database className="w-8 h-8 text-emerald-600 mr-3" />
-                <h2 className="text-2xl font-semibold text-emerald-800">Information We Collect</h2>
-              </div>
-              <div className="space-y-4 text-gray-700">
-                <div>
-                  <h3 className="text-lg font-semibold text-emerald-700 mb-2">Information You Provide</h3>
-                  <ul className="list-disc list-inside space-y-2 ml-4">
-                    <li>Contact information when you reach out to us via our contact form</li>
-                    <li>Email address if you subscribe to updates or newsletters</li>
-                    <li>Feedback, comments, or suggestions you provide</li>
-                    <li>Any other information you voluntarily provide</li>
-                  </ul>
-                </div>
-                
-                <div>
-                  <h3 className="text-lg font-semibold text-emerald-700 mb-2">Automatically Collected Information</h3>
-                  <ul className="list-disc list-inside space-y-2 ml-4">
-                    <li>Browser type and version</li>
-                    <li>Operating system information</li>
-                    <li>IP address (anonymized)</li>
-                    <li>Pages visited on our website</li>
-                    <li>Time and date of visits</li>
-                    <li>Referring website information</li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h3 className="text-lg font-semibold text-emerald-700 mb-2">Information We Do NOT Collect</h3>
-                  <ul className="list-disc list-inside space-y-2 ml-4">
-                    <li>Personal religious practices or beliefs</li>
-                    <li>Financial information or payment details</li>
-                    <li>Sensitive personal identifiers</li>
-                    <li>Location data beyond general geographic region</li>
-                  </ul>
-                </div>
-              </div>
+            <CardHeader>
+              <CardTitle className="flex items-center text-emerald-800">
+                <Database className="w-6 h-6 mr-3 text-emerald-600" />
+                Information We Collect
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4 text-gray-700">
+              <h3 className="font-semibold text-emerald-800">Information You Provide</h3>
+              <ul className="list-disc list-inside space-y-2 ml-4">
+                <li>Contact information when you reach out to us</li>
+                <li>Feedback and comments you submit</li>
+                <li>Any other information you voluntarily provide</li>
+              </ul>
+              
+              <h3 className="font-semibold text-emerald-800">Information Automatically Collected</h3>
+              <ul className="list-disc list-inside space-y-2 ml-4">
+                <li>Basic usage statistics (page views, time spent)</li>
+                <li>Device and browser information</li>
+                <li>IP address and general location</li>
+                <li>Referral sources</li>
+              </ul>
             </CardContent>
           </Card>
 
           <Card className="border-emerald-200">
-            <CardContent className="p-6">
-              <div className="flex items-center mb-4">
-                <Eye className="w-8 h-8 text-emerald-600 mr-3" />
-                <h2 className="text-2xl font-semibold text-emerald-800">How We Use Your Information</h2>
-              </div>
-              <div className="space-y-4 text-gray-700">
-                <p>We use the information we collect for the following purposes:</p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="bg-emerald-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-emerald-700 mb-2">Website Improvement</h4>
-                    <ul className="text-sm space-y-1">
-                      <li>• Analyze user behavior and preferences</li>
-                      <li>• Improve website functionality</li>
-                      <li>• Optimize content delivery</li>
-                    </ul>
-                  </div>
-                  <div className="bg-emerald-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-emerald-700 mb-2">Communication</h4>
-                    <ul className="text-sm space-y-1">
-                      <li>• Respond to your inquiries</li>
-                      <li>• Send updates about the website</li>
-                      <li>• Provide technical support</li>
-                    </ul>
-                  </div>
-                  <div className="bg-emerald-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-emerald-700 mb-2">Legal Compliance</h4>
-                    <ul className="text-sm space-y-1">
-                      <li>• Comply with applicable laws</li>
-                      <li>• Protect against fraud</li>
-                      <li>• Enforce our terms of service</li>
-                    </ul>
-                  </div>
-                  <div className="bg-emerald-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-emerald-700 mb-2">Analytics</h4>
-                    <ul className="text-sm space-y-1">
-                      <li>• Understand usage patterns</li>
-                      <li>• Measure website performance</li>
-                      <li>• Generate anonymous statistics</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+            <CardHeader>
+              <CardTitle className="flex items-center text-emerald-800">
+                <Eye className="w-6 h-6 mr-3 text-emerald-600" />
+                How We Use Your Information
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4 text-gray-700">
+              <p>We use the information we collect to:</p>
+              <ul className="list-disc list-inside space-y-2 ml-4">
+                <li>Provide and improve our educational content</li>
+                <li>Respond to your questions and feedback</li>
+                <li>Understand how our website is used</li>
+                <li>Improve website performance and user experience</li>
+                <li>Ensure website security and prevent abuse</li>
+              </ul>
+              <p className="font-semibold text-emerald-800">
+                We do not sell, trade, or rent your personal information to third parties.
+              </p>
             </CardContent>
           </Card>
 
           <Card className="border-emerald-200">
-            <CardContent className="p-6">
-              <div className="flex items-center mb-4">
-                <Cookie className="w-8 h-8 text-emerald-600 mr-3" />
-                <h2 className="text-2xl font-semibold text-emerald-800">Cookies and Tracking Technologies</h2>
-              </div>
-              <div className="space-y-4 text-gray-700">
-                <div>
-                  <h3 className="text-lg font-semibold text-emerald-700 mb-2">What Are Cookies?</h3>
-                  <p>
-                    Cookies are small text files stored on your device when you visit our website. 
-                    They help us provide you with a better browsing experience and understand how 
-                    you use our website.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-lg font-semibold text-emerald-700 mb-2">Types of Cookies We Use</h3>
-                  <div className="space-y-3">
-                    <div className="border-l-4 border-emerald-300 pl-4">
-                      <h4 className="font-semibold">Essential Cookies</h4>
-                      <p className="text-sm">Required for basic website functionality and cannot be disabled.</p>
-                    </div>
-                    <div className="border-l-4 border-emerald-300 pl-4">
-                      <h4 className="font-semibold">Analytics Cookies</h4>
-                      <p className="text-sm">Help us understand how visitors interact with our website (Google Analytics).</p>
-                    </div>
-                    <div className="border-l-4 border-emerald-300 pl-4">
-                      <h4 className="font-semibold">Advertising Cookies</h4>
-                      <p className="text-sm">Used by Google AdSense to display relevant advertisements.</p>
-                    </div>
-                    <div className="border-l-4 border-emerald-300 pl-4">
-                      <h4 className="font-semibold">Preference Cookies</h4>
-                      <p className="text-sm">Remember your settings to enhance your user experience.</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div>
-                  <h3 className="text-lg font-semibold text-emerald-700 mb-2">Managing Cookies</h3>
-                  <p>
-                    You can control and manage cookies through your browser settings. However, 
-                    disabling certain cookies may affect the functionality of 6kalimas.com.
-                  </p>
-                </div>
-              </div>
+            <CardHeader>
+              <CardTitle className="flex items-center text-emerald-800">
+                <Cookie className="w-6 h-6 mr-3 text-emerald-600" />
+                Cookies and Tracking
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4 text-gray-700">
+              <p>
+                We use cookies and similar technologies to enhance your browsing experience 
+                and understand how our website is used.
+              </p>
+              
+              <h3 className="font-semibold text-emerald-800">Types of Cookies We Use:</h3>
+              <ul className="list-disc list-inside space-y-2 ml-4">
+                <li><strong>Essential Cookies:</strong> Required for website functionality</li>
+                <li><strong>Analytics Cookies:</strong> Help us understand website usage</li>
+                <li><strong>Preference Cookies:</strong> Remember your settings and preferences</li>
+              </ul>
+              
+              <p>
+                You can control cookies through your browser settings. However, disabling 
+                certain cookies may affect website functionality.
+              </p>
             </CardContent>
           </Card>
 
           <Card className="border-emerald-200">
-            <CardContent className="p-6">
-              <div className="flex items-center mb-4">
-                <Lock className="w-8 h-8 text-emerald-600 mr-3" />
-                <h2 className="text-2xl font-semibold text-emerald-800">Third-Party Services</h2>
-              </div>
-              <div className="space-y-4 text-gray-700">
-                <div>
-                  <h3 className="text-lg font-semibold text-emerald-700 mb-2">Google Analytics</h3>
-                  <p>
-                    We use Google Analytics to analyze website traffic and user behavior. Google Analytics 
-                    collects information anonymously and reports website trends without identifying 
-                    individual visitors. You can opt-out of Google Analytics by installing the 
-                    <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" 
-                       className="text-emerald-600 hover:underline"> Google Analytics Opt-out Browser Add-on</a>.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-lg font-semibold text-emerald-700 mb-2">Google AdSense</h3>
-                  <p>
-                    6kalimas.com uses Google AdSense to display advertisements. Google may use cookies 
-                    to serve ads based on your visits to this and other websites. You can manage your 
-                    ad preferences and opt-out of personalized advertising by visiting 
-                    <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" 
-                       className="text-emerald-600 hover:underline"> Google's Ad Settings</a>.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-lg font-semibold text-emerald-700 mb-2">External Links</h3>
-                  <p>
-                    Our website may contain links to external websites. We are not responsible for 
-                    the privacy practices of these third-party sites and encourage you to review 
-                    their privacy policies.
-                  </p>
-                </div>
-              </div>
+            <CardHeader>
+              <CardTitle className="flex items-center text-emerald-800">
+                <Lock className="w-6 h-6 mr-3 text-emerald-600" />
+                Data Security
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4 text-gray-700">
+              <p>
+                We implement appropriate security measures to protect your information against 
+                unauthorized access, alteration, disclosure, or destruction.
+              </p>
+              
+              <h3 className="font-semibold text-emerald-800">Security Measures Include:</h3>
+              <ul className="list-disc list-inside space-y-2 ml-4">
+                <li>Encrypted data transmission (HTTPS)</li>
+                <li>Secure server infrastructure</li>
+                <li>Regular security updates and monitoring</li>
+                <li>Limited access to personal information</li>
+              </ul>
+              
+              <p>
+                While we strive to protect your information, no method of transmission over 
+                the internet is 100% secure. We cannot guarantee absolute security.
+              </p>
             </CardContent>
           </Card>
 
           <Card className="border-emerald-200">
-            <CardContent className="p-6">
-              <h2 className="text-2xl font-semibold text-emerald-800 mb-4">Your Rights and Choices</h2>
-              <div className="space-y-4 text-gray-700">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="bg-emerald-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-emerald-700 mb-2">Access</h4>
-                    <p className="text-sm">Request access to personal information we hold about you.</p>
-                  </div>
-                  <div className="bg-emerald-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-emerald-700 mb-2">Correction</h4>
-                    <p className="text-sm">Request correction of inaccurate personal information.</p>
-                  </div>
-                  <div className="bg-emerald-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-emerald-700 mb-2">Deletion</h4>
-                    <p className="text-sm">Request deletion of your personal information.</p>
-                  </div>
-                  <div className="bg-emerald-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-emerald-700 mb-2">Opt-out</h4>
-                    <p className="text-sm">Opt-out of marketing communications at any time.</p>
-                  </div>
-                </div>
-                <p className="text-center">
-                  <strong>To exercise these rights, contact us at:</strong> privacy@6kalimas.com
-                </p>
-              </div>
+            <CardHeader>
+              <CardTitle className="text-emerald-800">
+                Third-Party Services
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4 text-gray-700">
+              <p>
+                Our website may use third-party services for analytics, hosting, and other 
+                functionality. These services have their own privacy policies.
+              </p>
+              
+              <h3 className="font-semibold text-emerald-800">Third-Party Services May Include:</h3>
+              <ul className="list-disc list-inside space-y-2 ml-4">
+                <li>Web hosting providers</li>
+                <li>Analytics services</li>
+                <li>Content delivery networks</li>
+              </ul>
+              
+              <p>
+                We encourage you to review the privacy policies of any third-party services 
+                you interact with through our website.
+              </p>
             </CardContent>
           </Card>
 
           <Card className="border-emerald-200">
-            <CardContent className="p-6">
-              <h2 className="text-2xl font-semibold text-emerald-800 mb-4">Data Security</h2>
-              <div className="space-y-4 text-gray-700">
-                <p>
-                  We implement appropriate technical and organizational security measures to protect 
-                  your personal information against unauthorized access, alteration, disclosure, or 
-                  destruction. These measures include:
-                </p>
-                <ul className="list-disc list-inside space-y-2 ml-4">
-                  <li>SSL encryption for data transmission</li>
-                  <li>Regular security assessments</li>
-                  <li>Access controls and authentication</li>
-                  <li>Data minimization practices</li>
-                  <li>Regular backups and recovery procedures</li>
-                </ul>
-                <div className="bg-amber-50 border border-amber-200 p-4 rounded-lg">
-                  <p className="text-amber-800">
-                    <strong>Note:</strong> While we strive to protect your personal information, 
-                    no method of transmission over the Internet or electronic storage is 100% secure. 
-                    We cannot guarantee absolute security.
-                  </p>
-                </div>
-              </div>
+            <CardHeader>
+              <CardTitle className="text-emerald-800">
+                Your Rights and Choices
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4 text-gray-700">
+              <p>You have the right to:</p>
+              <ul className="list-disc list-inside space-y-2 ml-4">
+                <li>Access information we have about you</li>
+                <li>Request correction of inaccurate information</li>
+                <li>Request deletion of your information</li>
+                <li>Opt out of certain communications</li>
+                <li>Disable cookies through your browser</li>
+              </ul>
+              
+              <p>
+                To exercise these rights or if you have questions about your privacy, 
+                please contact us through our contact page.
+              </p>
             </CardContent>
           </Card>
 
           <Card className="border-emerald-200">
-            <CardContent className="p-6">
-              <h2 className="text-2xl font-semibold text-emerald-800 mb-4">Children's Privacy</h2>
-              <div className="space-y-4 text-gray-700">
-                <p>
-                  6kalimas.com is designed to be family-friendly and educational for users of all ages, 
-                  including children learning Islamic fundamentals. However, we do not knowingly collect 
-                  personal information from children under 13 years of age without parental consent.
-                </p>
-                <p>
-                  If you are a parent or guardian and believe your child has provided personal information 
-                  to us, please contact us at privacy@6kalimas.com, and we will delete such information 
-                  from our records.
-                </p>
-              </div>
+            <CardHeader>
+              <CardTitle className="text-emerald-800">
+                Children's Privacy
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4 text-gray-700">
+              <p>
+                Our website is family-friendly and suitable for all ages. We do not knowingly 
+                collect personal information from children under 13 without parental consent.
+              </p>
+              <p>
+                If you are a parent and believe your child has provided personal information, 
+                please contact us so we can remove such information.
+              </p>
             </CardContent>
           </Card>
 
           <Card className="border-emerald-200">
-            <CardContent className="p-6">
-              <h2 className="text-2xl font-semibold text-emerald-800 mb-4">International Users</h2>
-              <div className="space-y-4 text-gray-700">
-                <p>
-                  6kalimas.com serves users globally. If you are accessing our website from outside 
-                  the jurisdiction where our servers are located, please be aware that your information 
-                  may be transferred to, stored, and processed in countries with different privacy laws.
-                </p>
-                <p>
-                  By using our website, you consent to the transfer of your information to our facilities 
-                  and those third parties with whom we share it as described in this Privacy Policy.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="border-emerald-200">
-            <CardContent className="p-6">
-              <h2 className="text-2xl font-semibold text-emerald-800 mb-4">Changes to This Privacy Policy</h2>
-              <div className="space-y-4 text-gray-700">
-                <p>
-                  We may update this Privacy Policy from time to time to reflect changes in our 
-                  practices or for other operational, legal, or regulatory reasons. We will notify 
-                  you of any material changes by:
-                </p>
-                <ul className="list-disc list-inside space-y-2 ml-4">
-                  <li>Posting the updated Privacy Policy on this page</li>
-                  <li>Updating the "Last Updated" date</li>
-                  <li>Sending an email notification (if you have provided your email address)</li>
-                </ul>
-                <p>
-                  We encourage you to review this Privacy Policy periodically to stay informed 
-                  about how we protect your information.
-                </p>
-              </div>
+            <CardHeader>
+              <CardTitle className="text-emerald-800">
+                Changes to This Policy
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4 text-gray-700">
+              <p>
+                We may update this privacy policy from time to time to reflect changes in 
+                our practices or legal requirements. We will notify users of significant 
+                changes by posting a notice on our website.
+              </p>
+              <p>
+                Your continued use of our website after changes are posted constitutes 
+                acceptance of the updated privacy policy.
+              </p>
             </CardContent>
           </Card>
 
           <div className="bg-emerald-50 p-6 rounded-lg border border-emerald-200">
-            <div className="text-center">
-              <h3 className="text-xl font-bold text-emerald-800 mb-4">Contact Information</h3>
-              <div className="space-y-2 text-emerald-700">
-                <p><strong>Privacy Officer:</strong> privacy@6kalimas.com</p>
-                <p><strong>General Inquiries:</strong> info@6kalimas.com</p>
-                <p><strong>Website:</strong> https://6kalimas.com</p>
-              </div>
-            </div>
-            <div className="mt-6 pt-4 border-t border-emerald-200">
-              <p className="text-center text-emerald-800 font-semibold">
-                Last Updated: December 2024
-              </p>
-              <p className="text-center text-sm text-emerald-600 mt-2">
-                This Privacy Policy may be updated periodically. Please check this page regularly 
-                for the most current version.
-              </p>
-            </div>
+            <h3 className="text-lg font-semibold text-emerald-800 mb-3">
+              Contact Us About Privacy
+            </h3>
+            <p className="text-emerald-700">
+              If you have questions about this privacy policy or how we handle your 
+              information, please contact us through our contact page. We're committed 
+              to addressing your privacy concerns promptly.
+            </p>
           </div>
         </div>
       </main>
