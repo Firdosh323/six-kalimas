@@ -101,9 +101,9 @@ const Disclaimer = () => {
 
           <Card className="border-emerald-200">
             <CardHeader>
-              <CardTitle className="text-emerald-800">
+              <h2 className="text-2xl font-bold text-emerald-800">
                 Educational Purpose
-              </CardTitle>
+              </h2>
             </CardHeader>
             <CardContent className="space-y-4 text-gray-700">
               <p>
@@ -120,9 +120,9 @@ const Disclaimer = () => {
 
           <Card className="border-emerald-200">
             <CardHeader>
-              <CardTitle className="text-emerald-800">
+              <h2 className="text-2xl font-bold text-emerald-800">
                 Technical Disclaimer
-              </CardTitle>
+              </h2>
             </CardHeader>
             <CardContent className="space-y-4 text-gray-700">
               <p>
@@ -139,9 +139,9 @@ const Disclaimer = () => {
 
           <Card className="border-emerald-200">
             <CardHeader>
-              <CardTitle className="text-emerald-800">
+              <h2 className="text-2xl font-bold text-emerald-800">
                 User Responsibility
-              </CardTitle>
+              </h2>
             </CardHeader>
             <CardContent className="space-y-4 text-gray-700">
               <p>

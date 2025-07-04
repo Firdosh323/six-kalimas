@@ -46,6 +46,7 @@ const Index = () => {
       <Header visitCount={visitCount} onDownloadPDF={downloadPDF} />
       
       <main>
+        {/* Main H1 is in Hero component */}
         <Hero />
         
         <MainPageContent 

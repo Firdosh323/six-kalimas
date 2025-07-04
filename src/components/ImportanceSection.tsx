@@ -7,42 +7,42 @@ const ImportanceSection = () => {
     {
       icon: <Heart className="w-8 h-8 text-red-500" />,
       title: "Foundation of Faith",
-      description: "These declarations establish the core principles that guide every Muslim's spiritual journey and relationship with Allah.",
+      description: "These declarations establish the core principles that guide every Muslim's spiritual journey.",
       details: "Beginning with the Shahada, these sacred words affirm our belief and commitment to Islamic teachings.",
       color: "bg-red-50 border-red-200"
     },
     {
       icon: <Shield className="w-8 h-8 text-emerald-600" />,
       title: "Spiritual Protection",
-      description: "Regular recitation provides spiritual strength and protection from negative influences in daily life.",
+      description: "Regular recitation provides spiritual strength and protection from negative influences.",
       details: "These powerful declarations serve as a shield for the heart and mind, bringing peace and clarity.",
       color: "bg-emerald-50 border-emerald-200"
     },
     {
       icon: <Star className="w-8 h-8 text-blue-600" />,
       title: "Path to Paradise",
-      description: "Prophet Muhammad (PBUH) taught that sincere recitation of these declarations opens doors to divine mercy.",
+      description: "Prophet Muhammad (PBUH) taught that sincere recitation opens doors to divine mercy.",
       details: "Each declaration carries profound spiritual weight and brings believers closer to Allah's blessings.",
       color: "bg-blue-50 border-blue-200"
     },
     {
       icon: <BookOpen className="w-8 h-8 text-purple-600" />,
       title: "Complete Education",
-      description: "Learning these declarations provides comprehensive understanding of Islamic beliefs and practices.",
+      description: "Learning these declarations provides comprehensive understanding of Islamic beliefs.",
       details: "From unity of God to seeking forgiveness, each declaration teaches essential spiritual concepts.",
       color: "bg-purple-50 border-purple-200"
     },
     {
       icon: <Users className="w-8 h-8 text-orange-600" />,
       title: "Global Unity",
-      description: "These universal declarations unite Muslims worldwide, creating bonds that transcend cultural boundaries.",
-      details: "Muslims everywhere learn these same sacred words, fostering a sense of shared faith and community.",
+      description: "These universal declarations unite Muslims worldwide, creating bonds that transcend cultures.",
+      details: "Muslims everywhere learn these same sacred words, fostering shared faith and community.",
       color: "bg-orange-50 border-orange-200"
     },
     {
       icon: <Sparkles className="w-8 h-8 text-pink-600" />,
       title: "Daily Spiritual Practice",
-      description: "These declarations serve as powerful remembrance of Allah throughout the day, bringing spiritual focus.",
+      description: "These declarations serve as powerful remembrance of Allah throughout the day.",
       details: "Regular recitation strengthens faith and provides comfort during both joyful and challenging times.",
       color: "bg-pink-50 border-pink-200"
     }
@@ -69,9 +69,9 @@ const ImportanceSection = () => {
                     {point.icon}
                   </div>
                   <div>
-                    <CardTitle className="text-xl font-bold text-gray-900 mb-2">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">
                       {point.title}
-                    </CardTitle>
+                    </h3>
                     <p className="text-gray-700 leading-relaxed">
                       {point.description}
                     </p>
