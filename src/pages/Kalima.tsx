@@ -97,14 +97,6 @@ const Kalima = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-emerald-50">
-      {/* SEO Meta Tags */}
-      <div style={{ display: 'none' }}>
-        <h1>{kalima.name} - {kalima.title} - 6 Kalimas of Islam</h1>
-        <p>Learn {kalima.name} with Arabic text, transliteration, English translation and detailed meaning. Complete Islamic learning guide.</p>
-        <img src="https://images.unsplash.com/photo-1466442929976-97f336a657be" alt="Islamic mosque with traditional architecture showcasing the spiritual beauty of 6 Kalimas" style={{ display: 'none' }} />
-        <img src="https://images.unsplash.com/photo-1492321936769-b49830bc1d1e" alt="Peaceful Islamic building under starlit sky representing Islamic prayers" style={{ display: 'none' }} />
-      </div>
-
       <Header visitCount={visitCount} onDownloadPDF={downloadPDF} />
       
       {/* Main Content with Proper H1-H6 Structure */}
@@ -131,6 +123,7 @@ const Kalima = () => {
         {/* Contextual Navigation Links */}
         <section className="py-8 px-4">
           <div className="container mx-auto max-w-4xl">
+            <h2 className="text-2xl font-bold text-emerald-900 mb-6 text-center">Learning Resources</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <ContextualLinks type="quick-navigation" currentKalimaId={kalimaId} />
               <ContextualLinks type="learning-resources" currentKalimaId={kalimaId} />
@@ -145,27 +138,27 @@ const Kalima = () => {
         {/* Additional SEO Content */}
         <section className="py-16 px-4 bg-white">
           <div className="container mx-auto max-w-4xl">
-            <h3 className="text-2xl font-bold text-emerald-900 mb-6">
+            <h2 className="text-2xl font-bold text-emerald-900 mb-6">
               About {kalima.name}
-            </h3>
+            </h2>
             <div className="prose prose-emerald max-w-none">
-              <h4 className="text-xl font-semibold text-emerald-800 mb-3">
+              <h3 className="text-xl font-semibold text-emerald-800 mb-3">
                 Importance in Islam
-              </h4>
+              </h3>
               <p className="text-gray-700 mb-4">
                 {kalima.tafsir}
               </p>
               
-              <h4 className="text-xl font-semibold text-emerald-800 mb-3">
+              <h3 className="text-xl font-semibold text-emerald-800 mb-3">
                 How to Memorize {kalima.name}
-              </h4>
+              </h3>
               <p className="text-gray-700 mb-4">
                 This sacred Kalima should be recited with sincerity and understanding. Practice the Arabic text while understanding its meaning to strengthen your Islamic faith and connection with Allah.
               </p>
 
-              <h5 className="text-lg font-semibold text-emerald-800 mb-3">
+              <h4 className="text-lg font-semibold text-emerald-800 mb-3">
                 Learning Benefits
-              </h5>
+              </h4>
               <p className="text-gray-700">
                 {kalima.name} is part of the six fundamental Kalimas in Islam. Regular recitation helps strengthen your Islamic faith and understanding of core Islamic principles.
               </p>
