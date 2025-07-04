@@ -12,6 +12,9 @@ import MemorizationTips from '@/components/MemorizationTips';
 import PDFDownloadSection from '@/components/PDFDownloadSection';
 import ImportanceSection from '@/components/ImportanceSection';
 import TopicClusters from '@/components/TopicClusters';
+import IslamicTeachingsSection from '@/components/IslamicTeachingsSection';
+import UserQuestionsSection from '@/components/UserQuestionsSection';
+import PracticalGuidanceSection from '@/components/PracticalGuidanceSection';
 
 interface MainPageContentProps {
   dailyContent: {
@@ -63,10 +66,17 @@ const MainPageContent = ({ dailyContent, filteredKalimas, onDownloadPDF }: MainP
         onCardClick={handleCardClick} 
       />
 
+      {/* New Educational Content Sections */}
+      <IslamicTeachingsSection />
+      
+      <UserQuestionsSection />
+      
+      <PracticalGuidanceSection />
+
       {/* Topic Clusters Section */}
       <TopicClusters />
 
-      {/* New Long-tail Keyword Content Sections */}
+      {/* Existing Content Sections */}
       <MemorizationTips />
       
       <ImportanceSection />
