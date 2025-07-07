@@ -11,12 +11,7 @@ import FAQ from '@/components/FAQ';
 import MemorizationTips from '@/components/MemorizationTips';
 import PDFDownloadSection from '@/components/PDFDownloadSection';
 import ImportanceSection from '@/components/ImportanceSection';
-import TopicClusters from '@/components/TopicClusters';
-import IslamicTeachingsSection from '@/components/IslamicTeachingsSection';
-import UserQuestionsSection from '@/components/UserQuestionsSection';
-import PracticalGuidanceSection from '@/components/PracticalGuidanceSection';
 import SitemapGenerator from '@/components/SitemapGenerator';
-import SEOContent from '@/components/SEOContent';
 
 interface MainPageContentProps {
   dailyContent: {
@@ -51,27 +46,34 @@ const MainPageContent = ({ dailyContent, filteredKalimas, onDownloadPDF }: MainP
 
   return (
     <>
-      {/* Ad Placeholder */}
-      <section className="py-[5px] mx-[2px] px-0">
-        <div className="container mx-2px max-w-1xl px-0">
-          {/* Ad space */}
-        </div>
-      </section>
-
+      {/* Daily Content - Keep users engaged */}
       {dailyContent && (
         <KalimaOfTheDay content={dailyContent} onReadMore={handleReadMore} />
       )}
 
+      {/* Main Kalimas Grid - Primary content */}
       <KalimasGrid 
         kalimas={filteredKalimas} 
         activeKalima={activeKalima} 
         onCardClick={handleCardClick} 
       />
 
-      {/* Enhanced SEO Content Section */}
-      <SEOContent />
+      {/* Learning Support Section */}
+      <MemorizationTips />
+      
+      {/* Practical Features */}
+      <Features />
+      
+      {/* Importance and Benefits */}
+      <ImportanceSection />
+      
+      {/* Download Resources */}
+      <PDFDownloadSection onDownloadPDF={onDownloadPDF} />
 
-      {/* SEO Tools Section - Only visible in development or with special access */}
+      {/* FAQ - Addresses user questions */}
+      <FAQ />
+
+      {/* SEO Tools Section - Only visible in development */}
       {process.env.NODE_ENV === 'development' && (
         <section className="py-8 px-4 bg-gray-50">
           <div className="container mx-auto max-w-6xl">
@@ -81,24 +83,7 @@ const MainPageContent = ({ dailyContent, filteredKalimas, onDownloadPDF }: MainP
         </section>
       )}
 
-      {/* New Educational Content Sections */}
-      <IslamicTeachingsSection />
-      
-      <UserQuestionsSection />
-      
-      <PracticalGuidanceSection />
-
-      {/* Topic Clusters Section */}
-      <TopicClusters />
-
-      {/* Existing Content Sections */}
-      <MemorizationTips />
-      
-      <ImportanceSection />
-      
-      <PDFDownloadSection onDownloadPDF={onDownloadPDF} />
-
-      {/* Detailed Kalimas Section */}
+      {/* Modal Sections */}
       {activeKalima && selectedKalima && (
         <KalimaDetail 
           kalima={selectedKalima} 
@@ -106,16 +91,12 @@ const MainPageContent = ({ dailyContent, filteredKalimas, onDownloadPDF }: MainP
         />
       )}
 
-      {/* Detailed Dua Section */}
       {activeDua && selectedDua && (
         <DuaDetail 
           dua={selectedDua} 
           onClose={() => setActiveDua(null)} 
         />
       )}
-
-      <Features />
-      <FAQ />
     </>
   );
 };
