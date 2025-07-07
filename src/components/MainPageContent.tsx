@@ -67,6 +67,9 @@ const MainPageContent = ({ dailyContent, filteredKalimas, onDownloadPDF }: MainP
         onCardClick={handleCardClick} 
       />
 
+      {/* Enhanced SEO Content Section */}
+      <SEOContent />
+
       {/* SEO Tools Section - Only visible in development or with special access */}
       {process.env.NODE_ENV === 'development' && (
         <section className="py-8 px-4 bg-gray-50">
