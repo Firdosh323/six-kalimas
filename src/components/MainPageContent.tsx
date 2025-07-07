@@ -65,9 +65,7 @@ const MainPageContent = ({
       <FAQ />
 
       {/* SEO Tools Section - Only visible in development */}
-      {process.env.NODE_ENV === 'development' && <section className="py-8 px-4 bg-gray-50">
-          
-        </section>}
+      {process.env.NODE_ENV === 'development'}
 
       {/* Modal Sections */}
       {activeKalima && selectedKalima && <KalimaDetail kalima={selectedKalima} onClose={() => setActiveKalima(null)} />}
