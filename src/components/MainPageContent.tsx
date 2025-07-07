@@ -16,6 +16,7 @@ import IslamicTeachingsSection from '@/components/IslamicTeachingsSection';
 import UserQuestionsSection from '@/components/UserQuestionsSection';
 import PracticalGuidanceSection from '@/components/PracticalGuidanceSection';
 import SitemapGenerator from '@/components/SitemapGenerator';
+import SEOContent from '@/components/SEOContent';
 
 interface MainPageContentProps {
   dailyContent: {
