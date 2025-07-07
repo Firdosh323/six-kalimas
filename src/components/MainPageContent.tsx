@@ -12,7 +12,6 @@ import MemorizationTips from '@/components/MemorizationTips';
 import PDFDownloadSection from '@/components/PDFDownloadSection';
 import ImportanceSection from '@/components/ImportanceSection';
 import SitemapGenerator from '@/components/SitemapGenerator';
-
 interface MainPageContentProps {
   dailyContent: {
     id: number;
@@ -23,16 +22,17 @@ interface MainPageContentProps {
   filteredKalimas: typeof kalimas;
   onDownloadPDF: () => void;
 }
-
-const MainPageContent = ({ dailyContent, filteredKalimas, onDownloadPDF }: MainPageContentProps) => {
+const MainPageContent = ({
+  dailyContent,
+  filteredKalimas,
+  onDownloadPDF
+}: MainPageContentProps) => {
   const navigate = useNavigate();
   const [activeKalima, setActiveKalima] = useState<number | null>(null);
   const [activeDua, setActiveDua] = useState<number | null>(null);
-
   const handleCardClick = (id: number) => {
     navigate(`/kalima/${id}`);
   };
-
   const handleReadMore = (id: number, type: 'kalima' | 'dua') => {
     if (type === 'kalima') {
       setActiveKalima(id);
@@ -40,23 +40,14 @@ const MainPageContent = ({ dailyContent, filteredKalimas, onDownloadPDF }: MainP
       setActiveDua(id);
     }
   };
-
   const selectedKalima = activeKalima ? kalimas.find(k => k.id === activeKalima) : null;
   const selectedDua = activeDua ? duas.find(d => d.id === activeDua) : null;
-
-  return (
-    <>
+  return <>
       {/* Daily Content - Keep users engaged */}
-      {dailyContent && (
-        <KalimaOfTheDay content={dailyContent} onReadMore={handleReadMore} />
-      )}
+      {dailyContent && <KalimaOfTheDay content={dailyContent} onReadMore={handleReadMore} />}
 
       {/* Main Kalimas Grid - Primary content */}
-      <KalimasGrid 
-        kalimas={filteredKalimas} 
-        activeKalima={activeKalima} 
-        onCardClick={handleCardClick} 
-      />
+      <KalimasGrid kalimas={filteredKalimas} activeKalima={activeKalima} onCardClick={handleCardClick} />
 
       {/* Learning Support Section */}
       <MemorizationTips />
@@ -74,31 +65,14 @@ const MainPageContent = ({ dailyContent, filteredKalimas, onDownloadPDF }: MainP
       <FAQ />
 
       {/* SEO Tools Section - Only visible in development */}
-      {process.env.NODE_ENV === 'development' && (
-        <section className="py-8 px-4 bg-gray-50">
-          <div className="container mx-auto max-w-6xl">
-            <h2 className="text-2xl font-bold text-center mb-6">SEO Tools (Dev Only)</h2>
-            <SitemapGenerator />
-          </div>
-        </section>
-      )}
+      {process.env.NODE_ENV === 'development' && <section className="py-8 px-4 bg-gray-50">
+          
+        </section>}
 
       {/* Modal Sections */}
-      {activeKalima && selectedKalima && (
-        <KalimaDetail 
-          kalima={selectedKalima} 
-          onClose={() => setActiveKalima(null)} 
-        />
-      )}
+      {activeKalima && selectedKalima && <KalimaDetail kalima={selectedKalima} onClose={() => setActiveKalima(null)} />}
 
-      {activeDua && selectedDua && (
-        <DuaDetail 
-          dua={selectedDua} 
-          onClose={() => setActiveDua(null)} 
-        />
-      )}
-    </>
-  );
+      {activeDua && selectedDua && <DuaDetail dua={selectedDua} onClose={() => setActiveDua(null)} />}
+    </>;
 };
-
 export default MainPageContent;
