@@ -5,7 +5,6 @@ import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Statistics from '@/components/Statistics';
 import AppFooter from '@/components/AppFooter';
-import SEOContent from '@/components/SEOContent';
 import MainPageContent from '@/components/MainPageContent';
 import { useSEO } from '@/hooks/useSEO';
 import { useDailyContent } from '@/hooks/useDailyContent';
@@ -41,12 +40,9 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-emerald-50">
-      <SEOContent />
-      
       <Header visitCount={visitCount} onDownloadPDF={downloadPDF} />
       
       <main>
-        {/* Main H1 is in Hero component */}
         <Hero />
         
         <MainPageContent 

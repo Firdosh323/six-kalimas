@@ -2,10 +2,10 @@
 export const getWebsiteSchema = () => ({
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "6 Kalimas of Islam with Audio - Complete Guide",
+  "name": "6 Kalimas of Islam with Audio - Complete Learning Guide",
   "description": "Learn all 6 Kalimas of Islam with perfect audio pronunciation including 1st kalma, 2nd kalma, 3rd kalma, 4th kalma, 5th kalma, 6th kalma with Arabic text, English translations and meanings.",
   "url": "https://6kalimas.com/",
-  "keywords": "6 kalimas with audio, 1 to 6 kalma audio, islamic six kalma pronunciation, kalma in islam audio, muslim kalma recitation, 6 kalma in arabic audio, kalma with translation and audio",
+  "keywords": "6 kalimas with audio, learn kalimas online, islamic kalmas pronunciation, kalima audio recitation, 6 kalma arabic text, muslim prayers audio, how to pronounce kalimas",
   "potentialAction": {
     "@type": "SearchAction",
     "target": "https://6kalimas.com/?search={search_term_string}",
@@ -25,7 +25,8 @@ export const getWebsiteSchema = () => ({
       "associatedMedia": {
         "@type": "AudioObject",
         "contentUrl": "https://6kalimas.com/audio/First_Kalma.mp3",
-        "encodingFormat": "audio/mpeg"
+        "encodingFormat": "audio/mpeg",
+        "name": "First Kalima Audio Pronunciation"
       }
     },
     {
@@ -36,7 +37,8 @@ export const getWebsiteSchema = () => ({
       "associatedMedia": {
         "@type": "AudioObject",
         "contentUrl": "https://6kalimas.com/audio/Second_Kalma.mp3",
-        "encodingFormat": "audio/mpeg"
+        "encodingFormat": "audio/mpeg",
+        "name": "Second Kalima Audio Pronunciation"
       }
     },
     {
@@ -47,7 +49,8 @@ export const getWebsiteSchema = () => ({
       "associatedMedia": {
         "@type": "AudioObject",
         "contentUrl": "https://6kalimas.com/audio/Third_Kalma.mp3",
-        "encodingFormat": "audio/mpeg"
+        "encodingFormat": "audio/mpeg",
+        "name": "Third Kalima Audio Pronunciation"
       }
     },
     {
@@ -58,7 +61,8 @@ export const getWebsiteSchema = () => ({
       "associatedMedia": {
         "@type": "AudioObject",
         "contentUrl": "https://6kalimas.com/audio/Fourth_Kalma.mp3",
-        "encodingFormat": "audio/mpeg"
+        "encodingFormat": "audio/mpeg",
+        "name": "Fourth Kalima Audio Pronunciation"
       }
     },
     {
@@ -69,7 +73,8 @@ export const getWebsiteSchema = () => ({
       "associatedMedia": {
         "@type": "AudioObject",
         "contentUrl": "https://6kalimas.com/audio/Fifth_Kalma.mp3",
-        "encodingFormat": "audio/mpeg"
+        "encodingFormat": "audio/mpeg",
+        "name": "Fifth Kalima Audio Pronunciation"
       }
     },
     {
@@ -80,7 +85,8 @@ export const getWebsiteSchema = () => ({
       "associatedMedia": {
         "@type": "AudioObject",
         "contentUrl": "https://6kalimas.com/audio/Sixth_Kalma.mp3",
-        "encodingFormat": "audio/mpeg"
+        "encodingFormat": "audio/mpeg",
+        "name": "Sixth Kalima Audio Pronunciation"
       }
     }
   ]
@@ -113,6 +119,14 @@ export const getFAQSchema = () => ({
         "@type": "Answer",
         "text": "Yes, our platform provides access to all 6 Kalimas with audio recitation. Each Kalima has its own audio player for learning proper Arabic pronunciation."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to memorize all 6 Kalimas with audio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "With our audio-guided approach, most people can memorize all 6 Kalimas within 2-4 weeks with daily practice of 15-20 minutes."
+      }
     }
   ]
 });
@@ -136,7 +150,7 @@ export const getCourseSchema = () => ({
   "hasCourseInstance": {
     "@type": "CourseInstance",
     "courseMode": "online",
-    "courseWorkload": "PT1H",
+    "courseWorkload": "PT4W",
     "teaches": "Islamic Kalimas with Audio Pronunciation"
   },
   "educationalCredentialAwarded": "Islamic Knowledge Certification"
