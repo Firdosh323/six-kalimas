@@ -38,6 +38,12 @@ const Header = ({ visitCount, onDownloadPDF }: HeaderProps) => {
           </Link>
           <nav className="hidden md:flex items-center space-x-6">
             <span className="text-sm text-emerald-600">Visits: {visitCount.toLocaleString()}</span>
+            <Link to="/six-kalimas">
+              <Button variant="ghost" size="sm" className="text-emerald-700 hover:text-emerald-900">
+                <BookOpen className="w-4 h-4 mr-2" />
+                Complete Guide
+              </Button>
+            </Link>
             <Link to="/blog">
               <Button variant="ghost" size="sm" className="text-emerald-700 hover:text-emerald-900">
                 <BookOpen className="w-4 h-4 mr-2" />

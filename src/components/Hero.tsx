@@ -41,7 +41,16 @@ const Hero = () => {
           </p>
         </div>
 
-        <div className="mt-8">
+        <div className="mt-8 space-y-4">
+          <div>
+            <a
+              href="/six-kalimas"
+              className="inline-flex items-center justify-center rounded-md bg-emerald-600 px-6 py-3 text-white font-medium hover:bg-emerald-700 transition"
+              aria-label="Open the complete 6 Kalimas pillar guide"
+            >
+              Open Complete Guide
+            </a>
+          </div>
           <ChevronDown className="w-8 h-8 text-emerald-600 mx-auto animate-bounce" />
         </div>
       </div>
