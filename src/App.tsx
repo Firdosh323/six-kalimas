@@ -12,7 +12,6 @@ import Contact from "./pages/Contact";
 import Disclaimer from "./pages/Disclaimer";
 import Privacy from "./pages/Privacy";
 import NotFound from "./pages/NotFound";
-import PillarKalimas from "./pages/PillarKalimas";
 
 const queryClient = new QueryClient();
 
@@ -24,7 +23,6 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/six-kalimas" element={<PillarKalimas />} />
           <Route path="/kalima/:id" element={<Kalima />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
