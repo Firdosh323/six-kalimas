@@ -1,18 +1,36 @@
-# Welcome to your Lovable project
+# 6Kalimas.com – Learn the Six Kalimas Online
 
-## Project info
+A simple, user-friendly **online tool** to learn the Six Kalimas of Islam with **Arabic**, **translation**, and **audio**—perfect for memorization and spiritual enrichment.
 
-**URL**: https://lovable.dev/projects/1dadeec9-e576-40cd-b256-1e91e51d1089
+---
 
-## How can I edit this code?
+##  Features
 
-There are several ways of editing your application.
+- **Arabic Script** – Displays all six Kalimas in proper Arabic.
+- **English Translation** – Clear translation to support understanding.
+- **Audio Playback** – Listen to precise recitation for accurate learning.
+- *(Optional)* **Transliteration** – Helps pronounce Arabic text correctly.
+- *(Optional)* **Multi-Language Support** – Additional translations (e.g., Urdu, Hindi).
+- *(Optional)* **Offline Mode** – Access without an internet connection.
+- *(Optional)* **Responsive Design** – Works seamlessly across devices.
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/1dadeec9-e576-40cd-b256-1e91e51d1089) and start prompting.
+##  Demo
 
-Changes made via Lovable will be committed automatically to this repo.
+Visit the live site: [https://6kalimas.com/](https://6kalimas.com/)
+
+---
+
+##  How to Set Up Locally
+
+```bash
+git clone https://github.com/yourusername/6kalimas.com.git
+cd 6kalimas.com
+# Customize as needed—Node.js, Jekyll, or plain HTML?
+npm install  # or equivalent
+npm run start  # or open index.html in your browser
+
 
 **Use your preferred IDE**
 
@@ -60,14 +78,3 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/1dadeec9-e576-40cd-b256-1e91e51d1089) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
