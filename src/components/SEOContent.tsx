@@ -5,21 +5,8 @@ import { Volume2, BookOpen, Heart, Users } from 'lucide-react';
 const SEOContent = () => {
   return (
     <>
-      {/* Hidden structured content for SEO */}
-      <div style={{ display: 'none' }}>
-        <h1>Six Kalimas of Islam - Complete Islamic Learning Guide</h1>
-        <p>Learn the essential Islamic declarations with Arabic text, English translations, and pronunciation guides for spiritual growth and understanding.</p>
-        
-        {/* Educational content markup */}
-        <div itemScope itemType="https://schema.org/LearningResource">
-          <meta itemProp="learningResourceType" content="Islamic Education" />
-          <meta itemProp="educationalLevel" content="All Levels" />
-          <meta itemProp="teaches" content="Islamic Kalimas and Declarations" />
-        </div>
-      </div>
-
       {/* Visible SEO-optimized content */}
-      <section className="py-16 px-4 bg-gradient-to-br from-blue-50 via-white to-emerald-50">
+      <section className="py-16 px-4 bg-gradient-to-br from-emerald-50 via-white to-teal-50">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -44,10 +31,10 @@ const SEOContent = () => {
               </CardContent>
             </Card>
 
-            <Card className="bg-white border-blue-200 hover:shadow-lg transition-shadow">
+            <Card className="bg-white border-emerald-200 hover:shadow-lg transition-shadow">
               <CardHeader className="text-center pb-3">
-                <BookOpen className="w-8 h-8 text-blue-600 mx-auto mb-3" />
-                <CardTitle className="text-lg text-blue-900">Complete Meanings</CardTitle>
+                <BookOpen className="w-8 h-8 text-emerald-600 mx-auto mb-3" />
+                <CardTitle className="text-lg text-emerald-900">Complete Meanings</CardTitle>
               </CardHeader>
               <CardContent className="text-center">
                 <p className="text-gray-600 text-sm">
@@ -56,10 +43,10 @@ const SEOContent = () => {
               </CardContent>
             </Card>
 
-            <Card className="bg-white border-purple-200 hover:shadow-lg transition-shadow">
+            <Card className="bg-white border-teal-200 hover:shadow-lg transition-shadow">
               <CardHeader className="text-center pb-3">
-                <Heart className="w-8 h-8 text-purple-600 mx-auto mb-3" />
-                <CardTitle className="text-lg text-purple-900">Spiritual Growth</CardTitle>
+                <Heart className="w-8 h-8 text-teal-600 mx-auto mb-3" />
+                <CardTitle className="text-lg text-teal-900">Spiritual Growth</CardTitle>
               </CardHeader>
               <CardContent className="text-center">
                 <p className="text-gray-600 text-sm">
@@ -68,10 +55,10 @@ const SEOContent = () => {
               </CardContent>
             </Card>
 
-            <Card className="bg-white border-orange-200 hover:shadow-lg transition-shadow">
+            <Card className="bg-white border-emerald-200 hover:shadow-lg transition-shadow">
               <CardHeader className="text-center pb-3">
-                <Users className="w-8 h-8 text-orange-600 mx-auto mb-3" />
-                <CardTitle className="text-lg text-orange-900">Global Community</CardTitle>
+                <Users className="w-8 h-8 text-emerald-600 mx-auto mb-3" />
+                <CardTitle className="text-lg text-emerald-900">Global Community</CardTitle>
               </CardHeader>
               <CardContent className="text-center">
                 <p className="text-gray-600 text-sm">
@@ -81,7 +68,7 @@ const SEOContent = () => {
             </Card>
           </div>
 
-          <div className="bg-gradient-to-r from-emerald-800 to-blue-800 rounded-2xl p-8 text-white">
+          <div className="bg-gradient-to-r from-emerald-800 to-emerald-900 rounded-2xl p-8 text-white">
             <div className="text-center mb-8">
               <h3 className="text-2xl md:text-3xl font-bold mb-4">
                 The Six Kalimas Every Muslim Should Know
@@ -100,14 +87,14 @@ const SEOContent = () => {
                 </p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
-                <h4 className="text-xl font-semibold text-blue-200 mb-3">3rd & 4th Kalima</h4>
-                <p className="text-blue-100 text-sm leading-relaxed">
+                <h4 className="text-xl font-semibold text-emerald-200 mb-3">3rd & 4th Kalima</h4>
+                <p className="text-emerald-100 text-sm leading-relaxed">
                   Kalima Tamjeed and Tawheed - Glorification and unity of Allah
                 </p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
-                <h4 className="text-xl font-semibold text-purple-200 mb-3">5th & 6th Kalima</h4>
-                <p className="text-purple-100 text-sm leading-relaxed">
+                <h4 className="text-xl font-semibold text-emerald-200 mb-3">5th & 6th Kalima</h4>
+                <p className="text-emerald-100 text-sm leading-relaxed">
                   Kalima Istighfar and Radde Kufr - Seeking forgiveness and rejecting disbelief
                 </p>
               </div>

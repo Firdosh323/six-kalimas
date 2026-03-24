@@ -72,8 +72,7 @@ const MainPageContent = ({
       {/* FAQ - Addresses user questions */}
       <FAQ />
 
-      {/* SEO Tools Section - Only visible in development */}
-      {process.env.NODE_ENV === 'development'}
+
 
       {/* Modal Sections */}
       {activeKalima && selectedKalima && <KalimaDetail kalima={selectedKalima} onClose={() => setActiveKalima(null)} />}

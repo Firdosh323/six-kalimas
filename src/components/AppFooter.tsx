@@ -53,8 +53,8 @@ const AppFooter = () => {
               <ul className="space-y-2 text-emerald-200 text-sm">
                 <li><Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
                 <li><Link to="/disclaimer" className="hover:text-white transition-colors">Disclaimer</Link></li>
-                <li>Terms of Service</li>
-                <li>Cookie Policy</li>
+                <li><Link to="/disclaimer" className="hover:text-white transition-colors">Terms of Service</Link></li>
+                <li><Link to="/privacy" className="hover:text-white transition-colors">Cookie Policy</Link></li>
               </ul>
             </div>
           </div>
@@ -62,7 +62,7 @@ const AppFooter = () => {
           <div className="text-center">
             <div className="w-16 h-1 bg-gradient-to-r from-emerald-400 to-amber-400 mx-auto rounded-full mb-4"></div>
             <p className="text-emerald-300 text-sm">
-              © 2024 6kalimas.com. Made with ❤️ for the Muslim Ummah.
+              © 2026 6kalimas.com. Made with ❤️ for the Muslim Ummah.
             </p>
           </div>
         </div>

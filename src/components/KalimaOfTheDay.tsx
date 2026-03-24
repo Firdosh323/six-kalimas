@@ -17,11 +17,11 @@ const KalimaOfTheDay = ({ content, onReadMore }: KalimaOfTheDayProps) => {
   
   return (
     <section className="py-4 px-4">
-      <div className="container mx-2px max-w-1xl px-0">
-        <div className={`p-6 rounded-2xl border text-white relative overflow-hidden py-[10px] ${
+      <div className="container mx-auto max-w-4xl">
+        <div className={`p-6 rounded-2xl border border-white/20 text-white relative overflow-hidden ${
           isKalima 
-            ? 'bg-gradient-to-tr from-blue-500 to-indigo-600 from-opacity-20 to-opacity-5 border-white' 
-            : 'bg-gradient-to-tr from-emerald-500 to-green-600 from-opacity-20 to-opacity-5 border-white'
+            ? 'bg-gradient-to-tr from-emerald-600 to-emerald-800' 
+            : 'bg-gradient-to-tr from-teal-600 to-emerald-700'
         }`}>
           <div className="flex items-start space-x-3 mb-0.5 px-0">
             <div className="bg-white/20 rounded-full p-2">

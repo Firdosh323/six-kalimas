@@ -52,15 +52,16 @@ const KalimasGrid = ({ kalimas, activeKalima, onCardClick }: KalimasGridProps) =
                   <h4 className="text-xl font-bold mb-2">{kalima.shortTitle}</h4>
                 </div>
                 
-                <div className="p-6 bg-slate-800/90 text-white">
-                  <div className="text-right mb-4">
-                    <p className="text-lg font-arabic leading-relaxed" dir="rtl">
+                <div className="p-6 bg-white">
+                  <div className="text-right mb-2">
+                    <p className="text-base font-arabic leading-relaxed text-emerald-900" dir="rtl">
                       {kalima.arabic.length > 80 
                         ? `${kalima.arabic.substring(0, 80)}...` 
                         : kalima.arabic
                       }
                     </p>
                   </div>
+                  <p className="text-xs text-emerald-600 text-center mt-3 font-medium">Tap to learn with audio →</p>
                 </div>
               </CardContent>
             </Card>

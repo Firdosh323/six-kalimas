@@ -5,10 +5,10 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 const MemorizationTips = () => {
   const tips = [
     {
-      icon: <Repeat className="w-6 h-6 text-blue-600" />,
+      icon: <Repeat className="w-6 h-6 text-emerald-600" />,
       title: "Daily Repetition Method",
       description: "Recite each Kalima 10-15 times daily. Start with the 1st Kalima and gradually add more. Consistency is key to memorizing all 6 Kalimas effectively.",
-      color: "bg-blue-50 border-blue-200"
+      color: "bg-emerald-50 border-emerald-200"
     },
     {
       icon: <Volume2 className="w-6 h-6 text-emerald-600" />,
@@ -17,10 +17,10 @@ const MemorizationTips = () => {
       color: "bg-emerald-50 border-emerald-200"
     },
     {
-      icon: <Brain className="w-6 h-6 text-purple-600" />,
+      icon: <Brain className="w-6 h-6 text-teal-600" />,
       title: "Meaning-Based Memory",
       description: "Understand the English translation first. When you know what each Kalima means, memorizing the Arabic text becomes much easier and more meaningful.",
-      color: "bg-purple-50 border-purple-200"
+      color: "bg-teal-50 border-teal-200"
     },
     {
       icon: <Clock className="w-6 h-6 text-orange-600" />,
@@ -29,10 +29,10 @@ const MemorizationTips = () => {
       color: "bg-orange-50 border-orange-200"
     },
     {
-      icon: <BookOpen className="w-6 h-6 text-indigo-600" />,
+      icon: <BookOpen className="w-6 h-6 text-emerald-700" />,
       title: "Write and Practice",
       description: "Write each Kalima in Arabic script repeatedly. Physical writing helps reinforce memory patterns and improves retention of all 6 Kalimas.",
-      color: "bg-indigo-50 border-indigo-200"
+      color: "bg-emerald-50 border-emerald-200"
     },
     {
       icon: <Target className="w-6 h-6 text-pink-600" />,
@@ -43,7 +43,7 @@ const MemorizationTips = () => {
   ];
 
   return (
-    <section className="py-16 px-4 bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <section className="py-16 px-4 bg-gradient-to-br from-emerald-50 via-white to-teal-50">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -79,7 +79,7 @@ const MemorizationTips = () => {
           ))}
         </div>
 
-        <div className="bg-gradient-to-r from-emerald-100 to-blue-100 rounded-2xl p-8 text-center">
+        <div className="bg-gradient-to-r from-emerald-100 to-teal-100 rounded-2xl p-8 text-center">
           <h3 className="text-2xl font-bold text-gray-900 mb-4">
             Complete Memorization Timeline
           </h3>
@@ -89,11 +89,11 @@ const MemorizationTips = () => {
               <p className="text-sm text-gray-700">Master 1st & 2nd Kalima with audio assistance</p>
             </div>
             <div className="bg-white rounded-xl p-4 shadow-sm">
-              <h4 className="font-semibold text-blue-800 mb-2">Weeks 3-4</h4>
+              <h4 className="font-semibold text-teal-800 mb-2">Weeks 3-4</h4>
               <p className="text-sm text-gray-700">Learn 3rd & 4th Kalima through repetition</p>
             </div>
             <div className="bg-white rounded-xl p-4 shadow-sm">
-              <h4 className="font-semibold text-purple-800 mb-2">Weeks 5-6</h4>
+              <h4 className="font-semibold text-emerald-700 mb-2">Weeks 5-6</h4>
               <p className="text-sm text-gray-700">Complete 5th & 6th Kalima memorization</p>
             </div>
           </div>
