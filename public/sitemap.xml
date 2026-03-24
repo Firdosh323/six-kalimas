@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://6kalimas.com/</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://6kalimas.com/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://6kalimas.com/ar/"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://6kalimas.com/ur/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://6kalimas.com/"/>
+  </url>
+
+  <!-- Individual Kalima pages -->
+  <url>
+    <loc>https://6kalimas.com/kalima/1</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://6kalimas.com/kalima/1"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://6kalimas.com/kalima/1"/>
+  </url>
+  <url>
+    <loc>https://6kalimas.com/kalima/2</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://6kalimas.com/kalima/2"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://6kalimas.com/kalima/2"/>
+  </url>
+  <url>
+    <loc>https://6kalimas.com/kalima/3</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://6kalimas.com/kalima/3"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://6kalimas.com/kalima/3"/>
+  </url>
+  <url>
+    <loc>https://6kalimas.com/kalima/4</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://6kalimas.com/kalima/4"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://6kalimas.com/kalima/4"/>
+  </url>
+  <url>
+    <loc>https://6kalimas.com/kalima/5</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://6kalimas.com/kalima/5"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://6kalimas.com/kalima/5"/>
+  </url>
+  <url>
+    <loc>https://6kalimas.com/kalima/6</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://6kalimas.com/kalima/6"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://6kalimas.com/kalima/6"/>
+  </url>
+
+  <!-- Blog page -->
+  <url>
+    <loc>https://6kalimas.com/blog</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Blog posts -->
+  <url>
+    <loc>https://6kalimas.com/blog/how-to-memorize-6-kalimas-easily</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://6kalimas.com/blog/complete-list-islamic-duas-daily-life</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://6kalimas.com/blog/benefits-importance-6-kalimas-islam</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://6kalimas.com/blog/99-names-allah-asma-ul-husna</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://6kalimas.com/blog/how-to-perform-wudu-ablution-guide</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://6kalimas.com/blog/islamic-duas-protection-evil-eye-black-magic</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://6kalimas.com/blog/best-times-recite-kalimas-duas-islam</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://6kalimas.com/blog/learn-arabic-alphabet-quran-reading-guide</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://6kalimas.com/blog/6-kalimas-for-kids-parents-teaching-guide</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://6kalimas.com/blog/kalima-tayyibah-complete-guide-meaning-benefits</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.88</priority>
+  </url>
+  <url>
+    <loc>https://6kalimas.com/blog/kalima-istighfar-when-to-recite-benefits</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://6kalimas.com/blog/difference-between-kalima-tayyibah-and-shahadat</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.83</priority>
+  </url>
+  <url>
+    <loc>https://6kalimas.com/blog/6-kalimas-new-muslims-converts-guide</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.83</priority>
+  </url>
+  <url>
+    <loc>https://6kalimas.com/blog/how-many-kalimas-in-islam-complete-explanation</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://6kalimas.com/blog/kalima-radde-kufr-meaning-importance-when-to-recite</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.83</priority>
+  </url>
+  <url>
+    <loc>https://6kalimas.com/blog/6-kalimas-word-by-word-arabic-english-translation</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://6kalimas.com/blog/kalima-tawheed-fourth-kalima-unity-of-allah</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.83</priority>
+  </url>
+  <url>
+    <loc>https://6kalimas.com/blog/6-kalimas-roman-english-transliteration-guide</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Static pages -->
+  <url>
+    <loc>https://6kalimas.com/about</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://6kalimas.com/contact</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.55</priority>
+  </url>
+  <url>
+    <loc>https://6kalimas.com/privacy</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.30</priority>
+  </url>
+  <url>
+    <loc>https://6kalimas.com/disclaimer</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.30</priority>
+  </url>
+
+</urlset>
