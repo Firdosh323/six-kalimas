@@ -92,7 +92,7 @@ const KalimaDetail = ({ kalima, onClose }: KalimaDetailProps) => {
 
             <div className="p-8 space-y-8">
               {/* Enhanced Audio Player Section */}
-              <div className="bg-gradient-to-r from-emerald-25 to-blue-25 rounded-2xl p-6 border-2 border-emerald-200">
+              <div className="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-2xl p-6 border-2 border-emerald-200">
                 <div className="text-center mb-4">
                   <h3 className="text-xl font-bold text-emerald-900 mb-2 flex items-center justify-center">
                     <Volume2 className="w-6 h-6 mr-2" />
@@ -160,16 +160,16 @@ const KalimaDetail = ({ kalima, onClose }: KalimaDetailProps) => {
               </div>
 
               {/* Meaning with internal links */}
-              <div className="bg-blue-50 rounded-xl p-6 relative">
+              <div className="bg-emerald-50 rounded-xl p-6 relative">
                 <Button
                   onClick={() => copyToClipboard(kalima.meaning, 'Meaning')}
                   variant="ghost"
                   size="sm"
-                  className="absolute top-2 right-2 text-blue-600 hover:text-blue-800"
+                  className="absolute top-2 right-2 text-emerald-600 hover:text-emerald-800"
                 >
                   <Copy size={16} />
                 </Button>
-                <h4 className="font-semibold text-blue-800 mb-3">Detailed Meaning:</h4>
+                <h4 className="font-semibold text-emerald-800 mb-3">Detailed Meaning:</h4>
                 <div 
                   className="text-gray-700 leading-relaxed"
                   dangerouslySetInnerHTML={{ __html: linkedMeaning }}
@@ -197,8 +197,8 @@ const KalimaDetail = ({ kalima, onClose }: KalimaDetailProps) => {
               <ProgressTracker kalimaId={kalima.id} title={kalima.name} />
 
               {/* Audio Learning Tips */}
-              <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-6 border border-purple-200">
-                <h4 className="font-semibold text-purple-800 mb-3 flex items-center">
+              <div className="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-xl p-6 border border-emerald-200">
+                <h4 className="font-semibold text-emerald-800 mb-3 flex items-center">
                   <Volume2 className="w-5 h-5 mr-2" />
                   Audio Learning Tips for This Kalima:
                 </h4>
@@ -211,8 +211,8 @@ const KalimaDetail = ({ kalima, onClose }: KalimaDetailProps) => {
               </div>
 
               {/* Internal Links Section */}
-              <div className="bg-gradient-to-r from-cyan-50 to-blue-50 rounded-xl p-6 border border-cyan-200">
-                <h4 className="font-semibold text-cyan-800 mb-3 flex items-center">
+              <div className="bg-gradient-to-r from-teal-50 to-emerald-50 rounded-xl p-6 border border-teal-200">
+                <h4 className="font-semibold text-teal-800 mb-3 flex items-center">
                   🔗 Continue Your Islamic Learning Journey:
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">

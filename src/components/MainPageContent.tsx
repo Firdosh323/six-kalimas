@@ -12,6 +12,8 @@ import MemorizationTips from '@/components/MemorizationTips';
 import PDFDownloadSection from '@/components/PDFDownloadSection';
 import ImportanceSection from '@/components/ImportanceSection';
 import SitemapGenerator from '@/components/SitemapGenerator';
+import InternationalContent from '@/components/InternationalContent';
+import SEOContent from '@/components/SEOContent';
 interface MainPageContentProps {
   dailyContent: {
     id: number;
@@ -57,15 +59,20 @@ const MainPageContent = ({
       
       {/* Importance and Benefits */}
       <ImportanceSection />
-      
+
+      {/* International Content - Benefits, Urdu, Comparison Table */}
+      <InternationalContent />
+
+      {/* SEO Content section */}
+      <SEOContent />
+
       {/* Download Resources */}
       <PDFDownloadSection onDownloadPDF={onDownloadPDF} />
 
       {/* FAQ - Addresses user questions */}
       <FAQ />
 
-      {/* SEO Tools Section - Only visible in development */}
-      {process.env.NODE_ENV === 'development'}
+
 
       {/* Modal Sections */}
       {activeKalima && selectedKalima && <KalimaDetail kalima={selectedKalima} onClose={() => setActiveKalima(null)} />}
